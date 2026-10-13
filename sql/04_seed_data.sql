@@ -1,6 +1,6 @@
 -- =====================================================================
 --  Employee Payroll Management System
---  File : 04_seed_data.sql   (sample data for NEXATECH SOLUTIONS PVT. LTD.)
+--  File : 04_seed_data.sql   (sample data for All Caps Pvt. Ltd.)
 --  Run after 01_schema.sql, 02_functions_procedures.sql, 03_triggers.sql
 --  Payroll rows are NOT typed in by hand: they are produced by calling
 --  the procedures, exactly as the application does.
@@ -40,26 +40,26 @@ INSERT INTO designation (title, pay_grade, basic_salary, annual_leave_quota) VAL
 -- active employee (checked by trigger trg_validate_manager).
 INSERT INTO employee (first_name, last_name, email, phone, gender, dob, date_of_joining,
                       pan_no, bank_account_no, ifsc_code, status, dept_id, desig_id, reports_to, app_role) VALUES
- ('Sachin',    'Tendulkar',    'sachin.tendulkar@nexatech.example',   '9840012301', 'M', '1975-04-12', '2012-06-01', 'AAKPN1201K', '501000123401', 'HDFC0001201', 'Active', 10, 11, NULL, 'Admin'),
- ('MF',        'DOOM',         'mf.doom@nexatech.example',            '9840012302', 'M', '1985-09-23', '2015-03-16', 'ABMPR1202L', '501000123402', 'HDFC0001201', 'Active',  1,  1,    1, 'Admin'),
- ('Jeffery',   'Williams',     'jeffery.williams@nexatech.example',   '9840012303', 'M', '1988-01-30', '2016-07-11', 'ACKPS1203M', '30211456783',  'SBIN0000456', 'Active',  3,  6,    1, 'Payroll'),
- ('Aubrey',    'Graham',       'aubrey.graham@nexatech.example',      '9840012304', 'M', '1984-11-05', '2014-01-20', 'ADMPK1204N', '002101567804', 'ICIC0002345', 'Active',  2,  4,    1, 'Manager'),
- ('Michael',   'Jordan',       'michael.jordan@nexatech.example',     '9840012305', 'M', '1983-03-17', '2013-08-05', 'AEVPS1205P', '916010045605', 'UTIB0000789', 'Active',  4,  8,    1, 'Manager'),
- ('LeBron',    'James',        'lebron.james@nexatech.example',       '9840012306', 'M', '1996-07-14', '2019-07-01', 'AFAPI1206Q', '501000123406', 'HDFC0001201', 'Active',  2,  3,    4, 'Employee'),
- ('Cristiano', 'Ronaldo',      'cristiano.ronaldo@nexatech.example',  '9840012307', 'M', '1998-02-28', '2021-08-02', 'AGRPV1207R', '30211456787',  'SBIN0000456', 'Active',  2,  2,    4, 'Employee'),
- ('Serena',    'Williams',     'serena.williams@nexatech.example',    '9840012308', 'F', '1999-10-09', '2022-01-10', 'AHSPP1208S', '002101567808', 'ICIC0002345', 'Active',  2,  2,    4, 'Employee'),
- ('Lionel',    'Messi',        'lionel.messi@nexatech.example',       '9840012309', 'M', '1997-05-21', '2020-11-16', 'AIAPR1209T', '916010045609', 'UTIB0000789', 'Active',  8,  2,    4, 'Employee'),
- ('Simone',    'Biles',        'simone.biles@nexatech.example',       '9840012310', 'F', '1995-12-02', '2019-04-08', 'AJFPS1210U', '501000123410', 'HDFC0001201', 'Active',  3,  5,    3, 'Employee'),
- ('Rafael',    'Nadal',        'rafael.nadal@nexatech.example',       '9840012311', 'M', '1994-08-19', '2018-09-03', 'AKRPK1211V', '30211456791',  'SBIN0000456', 'Active',  3,  5,    3, 'Employee'),
- ('PV',        'Sindhu',       'pv.sindhu@nexatech.example',          '9840012312', 'F', '2000-06-25', '2023-02-01', 'ALDPM1212W', '002101567812', 'ICIC0002345', 'Active',  4,  7,    5, 'Employee'),
- ('Virat',     'Kohli',        'virat.kohli@nexatech.example',        '9840012313', 'M', '1999-01-13', '2022-06-15', 'AMSPK1213X', '916010045613', 'UTIB0000789', 'Active',  4,  7,    5, 'Employee'),
- ('Naomi',     'Osaka',        'naomi.osaka@nexatech.example',        '9840012314', 'F', '1993-04-04', '2017-10-23', 'ANLPN1214Y', '501000123414', 'HDFC0001201', 'Active',  5,  9,    5, 'Employee'),
- ('Usain',     'Bolt',         'usain.bolt@nexatech.example',         '9840012315', 'M', '2001-09-30', '2024-01-08', 'AOHPG1215Z', '30211456795',  'SBIN0000456', 'Active',  6, 10,    1, 'Employee'),
- ('Sania',     'Mirza',        'sania.mirza@nexatech.example',        '9840012316', 'F', '1997-11-11', '2021-03-22', 'APNPJ1216A', '002101567816', 'ICIC0002345', 'Active',  7, 10,    1, 'Employee'),
- ('Novak',     'Djokovic',     'novak.djokovic@nexatech.example',     '9840012317', 'M', '1992-07-07', '2017-05-29', 'AQAPP1217B', '916010045617', 'UTIB0000789', 'Active',  1, 12,    2, 'Employee'),
- ('Mary',      'Kom',          'mary.kom@nexatech.example',           '9840012318', 'F', '1996-03-15', '2020-02-17', 'ARPPD1218C', '501000123418', 'HDFC0001201', 'Active',  9, 13,    1, 'Employee'),
- ('Zlatan',    'Ibrahimovic',  'zlatan.ibrahimovic@nexatech.example', '9840012319', 'M', '1990-12-20', '2016-12-05', 'ASMPR1219D', '30211456799',  'SBIN0000456', 'Active',  2,  3,    4, 'Employee'),
- ('Coco',      'Gauff',        'coco.gauff@nexatech.example',         '9840012320', 'F', '2002-05-05', '2025-07-14', 'ATKPB1220E', '002101567820', 'ICIC0002345', 'Active',  2,  2,    4, 'Employee');
+ ('Sachin',    'Tendulkar',    'sachin.tendulkar@allcaps.example',   '9840012301', 'M', '1975-04-12', '2012-06-01', 'AAKPN1201K', '501000123401', 'HDFC0001201', 'Active', 10, 11, NULL, 'Admin'),
+ ('Daniel',    'Dumile',       'daniel.dumile@allcaps.example',      '9840012302', 'M', '1985-09-23', '2015-03-16', 'ABMPR1202L', '501000123402', 'HDFC0001201', 'Active',  1,  1,    1, 'Admin'),
+ ('Jeffery',   'Williams',     'jeffery.williams@allcaps.example',   '9840012303', 'M', '1988-01-30', '2016-07-11', 'ACKPS1203M', '30211456783',  'SBIN0000456', 'Active',  3,  6,    1, 'Payroll'),
+ ('Aubrey',    'Graham',       'aubrey.graham@allcaps.example',      '9840012304', 'M', '1984-11-05', '2014-01-20', 'ADMPK1204N', '002101567804', 'ICIC0002345', 'Active',  2,  4,    1, 'Manager'),
+ ('Michael',   'Jordan',       'michael.jordan@allcaps.example',     '9840012305', 'M', '1983-03-17', '2013-08-05', 'AEVPS1205P', '916010045605', 'UTIB0000789', 'Active',  4,  8,    1, 'Manager'),
+ ('LeBron',    'James',        'lebron.james@allcaps.example',       '9840012306', 'M', '1996-07-14', '2019-07-01', 'AFAPI1206Q', '501000123406', 'HDFC0001201', 'Active',  2,  3,    4, 'Employee'),
+ ('Cristiano', 'Ronaldo',      'cristiano.ronaldo@allcaps.example',  '9840012307', 'M', '1998-02-28', '2021-08-02', 'AGRPV1207R', '30211456787',  'SBIN0000456', 'Active',  2,  2,    4, 'Employee'),
+ ('Serena',    'Williams',     'serena.williams@allcaps.example',    '9840012308', 'F', '1999-10-09', '2022-01-10', 'AHSPP1208S', '002101567808', 'ICIC0002345', 'Active',  2,  2,    4, 'Employee'),
+ ('Lionel',    'Messi',        'lionel.messi@allcaps.example',       '9840012309', 'M', '1997-05-21', '2020-11-16', 'AIAPR1209T', '916010045609', 'UTIB0000789', 'Active',  8,  2,    4, 'Employee'),
+ ('Simone',    'Biles',        'simone.biles@allcaps.example',       '9840012310', 'F', '1995-12-02', '2019-04-08', 'AJFPS1210U', '501000123410', 'HDFC0001201', 'Active',  3,  5,    3, 'Employee'),
+ ('Rafael',    'Nadal',        'rafael.nadal@allcaps.example',       '9840012311', 'M', '1994-08-19', '2018-09-03', 'AKRPK1211V', '30211456791',  'SBIN0000456', 'Active',  3,  5,    3, 'Employee'),
+ ('PV',        'Sindhu',       'pv.sindhu@allcaps.example',          '9840012312', 'F', '2000-06-25', '2023-02-01', 'ALDPM1212W', '002101567812', 'ICIC0002345', 'Active',  4,  7,    5, 'Employee'),
+ ('Virat',     'Kohli',        'virat.kohli@allcaps.example',        '9840012313', 'M', '1999-01-13', '2022-06-15', 'AMSPK1213X', '916010045613', 'UTIB0000789', 'Active',  4,  7,    5, 'Employee'),
+ ('Naomi',     'Osaka',        'naomi.osaka@allcaps.example',        '9840012314', 'F', '1993-04-04', '2017-10-23', 'ANLPN1214Y', '501000123414', 'HDFC0001201', 'Active',  5,  9,    5, 'Employee'),
+ ('Usain',     'Bolt',         'usain.bolt@allcaps.example',         '9840012315', 'M', '2001-09-30', '2024-01-08', 'AOHPG1215Z', '30211456795',  'SBIN0000456', 'Active',  6, 10,    1, 'Employee'),
+ ('Sania',     'Mirza',        'sania.mirza@allcaps.example',        '9840012316', 'F', '1997-11-11', '2021-03-22', 'APNPJ1216A', '002101567816', 'ICIC0002345', 'Active',  7, 10,    1, 'Employee'),
+ ('Novak',     'Djokovic',     'novak.djokovic@allcaps.example',     '9840012317', 'M', '1992-07-07', '2017-05-29', 'AQAPP1217B', '916010045617', 'UTIB0000789', 'Active',  1, 12,    2, 'Employee'),
+ ('Mary',      'Kom',          'mary.kom@allcaps.example',           '9840012318', 'F', '1996-03-15', '2020-02-17', 'ARPPD1218C', '501000123418', 'HDFC0001201', 'Active',  9, 13,    1, 'Employee'),
+ ('Zlatan',    'Ibrahimovic',  'zlatan.ibrahimovic@allcaps.example', '9840012319', 'M', '1990-12-20', '2016-12-05', 'ASMPR1219D', '30211456799',  'SBIN0000456', 'Active',  2,  3,    4, 'Employee'),
+ ('Coco',      'Gauff',        'coco.gauff@allcaps.example',         '9840012320', 'F', '2002-05-05', '2025-07-14', 'ATKPB1220E', '002101567820', 'ICIC0002345', 'Active',  2,  2,    4, 'Employee');
 
 -- department heads (1:1 HEADS relationship)
 UPDATE department SET head_emp_id = 2  WHERE dept_name = 'Human Resources';

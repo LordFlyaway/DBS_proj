@@ -30,7 +30,7 @@ export default function Payslip({ payroll, onClose }) {
         <div className="payslip">
           <div className="payslip-head">
             <div>
-              <div className="payslip-company">NEXATECH SOLUTIONS PVT. LTD.</div>
+              <div className="payslip-company">All Caps Pvt. Ltd.</div>
               <div className="muted small">Salary slip for {monthName(p.pay_month)} {p.pay_year}</div>
             </div>
             <Badge>{p.status}</Badge>

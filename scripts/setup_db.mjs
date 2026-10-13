@@ -55,7 +55,7 @@ const { rows: emps } = await client.query("SELECT emp_id, email FROM employee OR
 // Remove demo logins whose e-mail no longer belongs to any employee (e.g. after renaming staff).
 const stale = await client.query(
   `DELETE FROM auth.users u
-    WHERE u.email LIKE '%@nexatech.example'
+    WHERE (u.email LIKE '%@allcaps.example' OR u.email LIKE '%@nexatech.example')
       AND NOT EXISTS (SELECT 1 FROM employee e WHERE lower(e.email) = lower(u.email))`);
 if (stale.rowCount) console.log(`removed ${stale.rowCount} old demo login(s)`);
 let created = 0;

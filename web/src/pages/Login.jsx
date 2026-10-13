@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 
 const DEMO = [
-  { role: "Admin", who: "MF DOOM", email: "mf.doom@nexatech.example" },
-  { role: "Payroll", who: "Jeffery Williams", email: "jeffery.williams@nexatech.example" },
-  { role: "Manager", who: "Aubrey Graham", email: "aubrey.graham@nexatech.example" },
-  { role: "Employee", who: "LeBron James", email: "lebron.james@nexatech.example" },
+  { role: "Admin", who: "Daniel Dumile", email: "daniel.dumile@allcaps.example" },
+  { role: "Payroll", who: "Jeffery Williams", email: "jeffery.williams@allcaps.example" },
+  { role: "Manager", who: "Aubrey Graham", email: "aubrey.graham@allcaps.example" },
+  { role: "Employee", who: "LeBron James", email: "lebron.james@allcaps.example" },
 ];
 
 const SLIDES = [
@@ -40,10 +40,10 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <section className="auth-visual" aria-label="About NEXATECH Payroll">
+        <section className="auth-visual" aria-label="About All Caps Payroll">
           <Scene />
           <div className="auth-visual-top">
-            <div className="auth-logo">NEXATECH</div>
+            <div className="auth-logo">All Caps</div>
             <span className="auth-chip">BCSE302L · DBMS Project</span>
           </div>
           <div className="auth-caption">

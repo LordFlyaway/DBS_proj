@@ -27,7 +27,7 @@ export default function Layout() {
     <div className="shell">
       <aside className={`sidebar ${menu ? "sidebar-open" : ""}`}>
         <div className="brand">
-          <div className="brand-name">NEXATECH</div>
+          <div className="brand-name">All Caps</div>
           <div className="brand-sub">Payroll Management System</div>
         </div>
         <nav className="nav" onClick={() => setMenu(false)}>

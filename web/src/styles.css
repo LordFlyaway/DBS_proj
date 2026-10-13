@@ -103,13 +103,9 @@ input:focus, select:focus { outline: 2px solid var(--brand-2); outline-offset: -
   top: 0;
   height: 100vh;
 }
-.brand { display: flex; align-items: center; gap: 10px; padding: 0 8px 18px; }
-.brand-mark {
-  width: 36px; height: 36px; border-radius: 10px; background: var(--gold); color: var(--brand);
-  display: grid; place-items: center; font-weight: 800; font-size: 18px; flex-shrink: 0;
-}
-.brand-name { font-weight: 700; font-size: 15px; }
-.brand-sub { font-size: 11px; opacity: 0.7; }
+.brand { padding: 2px 10px 20px; }
+.brand-name { font-weight: 800; font-size: 20px; letter-spacing: 0.14em; color: #fff; }
+.brand-sub { font-size: 11px; opacity: 0.7; margin-top: 2px; }
 .nav { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow-y: auto; }
 .nav-item {
   display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px;
@@ -328,7 +324,7 @@ input:focus, select:focus { outline: 2px solid var(--brand-2); outline-offset: -
 }
 .auth-scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
 .auth-visual-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-.auth-logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; letter-spacing: 0.01em; }
+.auth-logo { font-weight: 800; font-size: 22px; letter-spacing: 0.16em; }
 .auth-chip {
   font-size: 13px; font-weight: 500; padding: 7px 14px; border-radius: 99px;
   background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(6px); border: 1px solid rgba(255, 255, 255, 0.18);

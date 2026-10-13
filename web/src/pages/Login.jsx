@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../lib/auth";
 
 const DEMO = [
-  { role: "Admin", who: "Priya Raman", email: "priya.raman@nexatech.example" },
-  { role: "Payroll", who: "Karthik S.", email: "karthik.s@nexatech.example" },
-  { role: "Manager", who: "Meera Krishnan", email: "meera.krishnan@nexatech.example" },
-  { role: "Employee", who: "Ananya Iyer", email: "ananya.iyer@nexatech.example" },
+  { role: "Admin", who: "MF DOOM", email: "mf.doom@nexatech.example" },
+  { role: "Payroll", who: "Jeffery Williams", email: "jeffery.williams@nexatech.example" },
+  { role: "Manager", who: "Aubrey Graham", email: "aubrey.graham@nexatech.example" },
+  { role: "Employee", who: "LeBron James", email: "lebron.james@nexatech.example" },
 ];
 
 const SLIDES = [
@@ -40,13 +40,10 @@ export default function Login() {
   return (
     <div className="auth-page">
       <div className="auth-card">
-        <section className="auth-visual" aria-label="About NexaTech Payroll">
+        <section className="auth-visual" aria-label="About NEXATECH Payroll">
           <Scene />
           <div className="auth-visual-top">
-            <div className="auth-logo">
-              <span className="brand-mark">₹</span>
-              <span>NexaTech</span>
-            </div>
+            <div className="auth-logo">NEXATECH</div>
             <span className="auth-chip">BCSE302L · DBMS Project</span>
           </div>
           <div className="auth-caption">

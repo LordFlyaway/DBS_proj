@@ -51,6 +51,13 @@ if (!process.argv.includes("--users")) {
 // Demo login for every employee: e-mail = employee e-mail, shared demo password.
 // Inserted straight into Supabase Auth (already confirmed, so no e-mail is sent).
 const { rows: emps } = await client.query("SELECT emp_id, email FROM employee ORDER BY emp_id");
+
+// Remove demo logins whose e-mail no longer belongs to any employee (e.g. after renaming staff).
+const stale = await client.query(
+  `DELETE FROM auth.users u
+    WHERE u.email LIKE '%@nexatech.example'
+      AND NOT EXISTS (SELECT 1 FROM employee e WHERE lower(e.email) = lower(u.email))`);
+if (stale.rowCount) console.log(`removed ${stale.rowCount} old demo login(s)`);
 let created = 0;
 for (const { email } of emps) {
   const exists = await client.query("SELECT id FROM auth.users WHERE lower(email) = lower($1)", [email]);

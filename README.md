@@ -2,7 +2,7 @@
 
 BCSE302L Database Systems course project. The system runs on a PostgreSQL database hosted on **Supabase**, with a role-based **React** web app deployed on **Vercel**.
 
-The company in the sample data, NexaTech Solutions, is fictional. The data covers 20 employees, 10 departments, and attendance, leave and payroll for August–October 2026.
+The company in the sample data, NEXATECH SOLUTIONS, is fictional; its staff are named after rappers and sports stars for fun. The data covers 20 employees, 10 departments, and attendance, leave and payroll for August–October 2026.
 
 ## What's inside
 
@@ -55,9 +55,9 @@ To test the SQL without Supabase, run `cd scripts && npm run test:local`.
 
 Every employee can log in with their e-mail and `DEMO_PASSWORD`:
 
-| Role | E-mail |
-|---|---|
-| Admin | priya.raman@nexatech.example |
-| Payroll | karthik.s@nexatech.example |
-| Manager | meera.krishnan@nexatech.example |
-| Employee | ananya.iyer@nexatech.example |
+| Role | Name | E-mail |
+|---|---|---|
+| Admin | MF DOOM | mf.doom@nexatech.example |
+| Payroll | Jeffery Williams | jeffery.williams@nexatech.example |
+| Manager | Aubrey Graham | aubrey.graham@nexatech.example |
+| Employee | LeBron James | lebron.james@nexatech.example |

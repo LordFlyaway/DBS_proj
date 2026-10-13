@@ -27,11 +27,8 @@ export default function Layout() {
     <div className="shell">
       <aside className={`sidebar ${menu ? "sidebar-open" : ""}`}>
         <div className="brand">
-          <span className="brand-mark">₹</span>
-          <div>
-            <div className="brand-name">NexaTech Payroll</div>
-            <div className="brand-sub">Payroll Management System</div>
-          </div>
+          <div className="brand-name">NEXATECH</div>
+          <div className="brand-sub">Payroll Management System</div>
         </div>
         <nav className="nav" onClick={() => setMenu(false)}>
           {NAV.filter((n) => n.roles.includes(role)).map((n) => (

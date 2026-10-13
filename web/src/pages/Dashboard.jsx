@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import { run, notify } from "../lib/activity";
@@ -8,14 +9,15 @@ import { money, money0, monthName, date, time, todayISO, nowTime, hoursBetween }
 
 export default function Dashboard() {
   const { profile, isStaff, role } = useAuth();
+  const [version, setVersion] = useState(0); // bumps after check-in/out so the counts reload
   return (
     <>
       <PageHeader title={`Welcome, ${profile.first_name}`} subtitle={greetingLine(role)} />
       <div className="grid-2">
-        <CheckInCard />
+        <CheckInCard onChange={() => setVersion((v) => v + 1)} />
         <MySummary />
       </div>
-      {isStaff && <CompanyOverview />}
+      {isStaff && <CompanyOverview key={version} />}
       {role === "Manager" && <TeamOverview />}
     </>
   );
@@ -31,7 +33,7 @@ function greetingLine(role) {
 }
 
 /* ---------------- check-in / check-out (INSERT / UPDATE on attendance) ---------------- */
-function CheckInCard() {
+function CheckInCard({ onChange }) {
   const { profile } = useAuth();
   const today = todayISO();
   const { data: rec, loading, reload } = useLoad(() =>
@@ -51,6 +53,7 @@ function CheckInCard() {
         () => "1 row inserted");
       notify("success", `Checked in at ${t}`);
       reload();
+      onChange();
     } catch (e) { notify("error", e.message); }
   }
   async function checkOut() {
@@ -62,6 +65,7 @@ function CheckInCard() {
         (d) => `${d.length} row updated`);
       notify("success", `Checked out at ${t}`);
       reload();
+      onChange();
     } catch (e) { notify("error", e.message); }
   }
 

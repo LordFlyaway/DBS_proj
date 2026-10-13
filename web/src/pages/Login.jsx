@@ -44,7 +44,6 @@ export default function Login() {
           <Scene />
           <div className="auth-visual-top">
             <div className="auth-logo">All Caps</div>
-            <span className="auth-chip">BCSE302L · DBMS Project</span>
           </div>
           <div className="auth-caption">
             {SLIDES.map((s, i) => (

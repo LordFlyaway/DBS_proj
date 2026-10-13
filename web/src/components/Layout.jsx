@@ -4,6 +4,12 @@ import { useAuth } from "../lib/auth";
 import { useActivity, useToasts, clearActivity } from "../lib/activity";
 import { Badge, SqlBlock } from "./ui";
 
+const CREDITS = [
+  { name: "Krishiv Rajkumar", reg: "24BDE0132" },
+  { name: "Asher Mathew", reg: "24BDE0128" },
+  { name: "Sai Praneeth", reg: "24BYB0143" },
+];
+
 const NAV = [
   { to: "/", label: "Dashboard", icon: "◧", roles: ["Admin", "Payroll", "Manager", "Employee"] },
   { to: "/employees", label: "Employees", icon: "◎", roles: ["Admin", "Payroll", "Manager"], managerLabel: "My Team" },
@@ -38,6 +44,15 @@ export default function Layout() {
             </NavLink>
           ))}
         </nav>
+        <div className="credits" aria-label="Credits">
+          <div className="credits-title">Credits</div>
+          {CREDITS.map((c) => (
+            <div key={c.reg} className="credit">
+              <span className="credit-name">{c.name}</span>
+              <span className="credit-reg">{c.reg}</span>
+            </div>
+          ))}
+        </div>
         <div className="user-card">
           <div className="avatar">{profile.first_name[0]}{profile.last_name[0]}</div>
           <div className="user-meta">

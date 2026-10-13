@@ -1,0 +1,3044 @@
+{
+ "counts": {
+  "cols": [
+   "table_name",
+   "rows"
+  ],
+  "rows": [
+   [
+    "department",
+    "10"
+   ],
+   [
+    "designation",
+    "13"
+   ],
+   [
+    "employee",
+    "20"
+   ],
+   [
+    "attendance",
+    "971"
+   ],
+   [
+    "leave_request",
+    "13"
+   ],
+   [
+    "salary_component",
+    "12"
+   ],
+   [
+    "payroll",
+    "39"
+   ],
+   [
+    "payroll_detail",
+    "390"
+   ]
+  ],
+  "affected": 0
+ },
+ "samples": {
+  "department": {
+   "cols": [
+    "dept_id",
+    "dept_name",
+    "location",
+    "head_emp_id",
+    "created_on"
+   ],
+   "rows": [
+    [
+     "1",
+     "Human Resources",
+     "Chennai",
+     "2",
+     "2012-06-01"
+    ],
+    [
+     "2",
+     "Engineering",
+     "Bengaluru",
+     "4",
+     "2012-06-01"
+    ],
+    [
+     "3",
+     "Finance",
+     "Chennai",
+     "3",
+     "2012-06-01"
+    ],
+    [
+     "4",
+     "Sales",
+     "Mumbai",
+     "5",
+     "2013-04-15"
+    ],
+    [
+     "5",
+     "Marketing",
+     "Mumbai",
+     "14",
+     "2014-02-10"
+    ],
+    [
+     "6",
+     "Operations",
+     "Pune",
+     "NULL",
+     "2015-09-01"
+    ],
+    [
+     "7",
+     "Customer Support",
+     "Hyderabad",
+     "NULL",
+     "2016-01-04"
+    ],
+    [
+     "8",
+     "Quality Assurance",
+     "Bengaluru",
+     "NULL",
+     "2017-07-17"
+    ],
+    [
+     "9",
+     "Legal",
+     "New Delhi",
+     "NULL",
+     "2018-03-12"
+    ],
+    [
+     "10",
+     "Administration",
+     "Vellore",
+     "1",
+     "2012-06-01"
+    ]
+   ],
+   "affected": 0
+  },
+  "designation": {
+   "cols": [
+    "desig_id",
+    "title",
+    "pay_grade",
+    "basic_salary",
+    "annual_leave_quota"
+   ],
+   "rows": [
+    [
+     "1",
+     "HR Manager",
+     "G4",
+     "85000.00",
+     "24"
+    ],
+    [
+     "2",
+     "Software Engineer",
+     "G2",
+     "45000.00",
+     "20"
+    ],
+    [
+     "3",
+     "Senior Software Engineer",
+     "G3",
+     "65000.00",
+     "22"
+    ],
+    [
+     "4",
+     "Engineering Manager",
+     "G4",
+     "95000.00",
+     "24"
+    ],
+    [
+     "5",
+     "Accountant",
+     "G2",
+     "40000.00",
+     "20"
+    ],
+    [
+     "6",
+     "Payroll Officer",
+     "G3",
+     "52000.00",
+     "22"
+    ],
+    [
+     "7",
+     "Sales Executive",
+     "G1",
+     "30000.00",
+     "18"
+    ],
+    [
+     "8",
+     "Sales Manager",
+     "G4",
+     "80000.00",
+     "24"
+    ],
+    [
+     "9",
+     "Marketing Analyst",
+     "G2",
+     "42000.00",
+     "20"
+    ],
+    [
+     "10",
+     "Operations Associate",
+     "G1",
+     "28000.00",
+     "18"
+    ],
+    [
+     "11",
+     "Director",
+     "G5",
+     "150000.00",
+     "30"
+    ],
+    [
+     "12",
+     "HR Executive",
+     "G2",
+     "38000.00",
+     "20"
+    ],
+    [
+     "13",
+     "Legal Counsel",
+     "G3",
+     "70000.00",
+     "22"
+    ]
+   ],
+   "affected": 0
+  },
+  "employee": {
+   "cols": [
+    "emp_id",
+    "first_name",
+    "last_name",
+    "gender",
+    "date_of_joining",
+    "dept_id",
+    "desig_id",
+    "reports_to",
+    "app_role",
+    "status"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin",
+     "Tendulkar",
+     "M",
+     "2012-06-01",
+     "10",
+     "11",
+     "NULL",
+     "Admin",
+     "Active"
+    ],
+    [
+     "2",
+     "Daniel",
+     "Dumile",
+     "M",
+     "2015-03-16",
+     "1",
+     "1",
+     "1",
+     "Admin",
+     "Active"
+    ],
+    [
+     "3",
+     "Jeffery",
+     "Williams",
+     "M",
+     "2016-07-11",
+     "3",
+     "6",
+     "1",
+     "Payroll",
+     "Active"
+    ],
+    [
+     "4",
+     "Aubrey",
+     "Graham",
+     "M",
+     "2014-01-20",
+     "2",
+     "4",
+     "1",
+     "Manager",
+     "Active"
+    ],
+    [
+     "5",
+     "Michael",
+     "Jordan",
+     "M",
+     "2013-08-05",
+     "4",
+     "8",
+     "1",
+     "Manager",
+     "Active"
+    ],
+    [
+     "6",
+     "LeBron",
+     "James",
+     "M",
+     "2019-07-01",
+     "2",
+     "3",
+     "4",
+     "Employee",
+     "Active"
+    ],
+    [
+     "7",
+     "Cristiano",
+     "Ronaldo",
+     "M",
+     "2021-08-02",
+     "2",
+     "2",
+     "4",
+     "Employee",
+     "Active"
+    ],
+    [
+     "8",
+     "Serena",
+     "Williams",
+     "F",
+     "2022-01-10",
+     "2",
+     "2",
+     "4",
+     "Employee",
+     "Active"
+    ],
+    [
+     "9",
+     "Lionel",
+     "Messi",
+     "M",
+     "2020-11-16",
+     "8",
+     "2",
+     "4",
+     "Employee",
+     "Active"
+    ],
+    [
+     "10",
+     "Simone",
+     "Biles",
+     "F",
+     "2019-04-08",
+     "3",
+     "5",
+     "3",
+     "Employee",
+     "Active"
+    ],
+    [
+     "11",
+     "Rafael",
+     "Nadal",
+     "M",
+     "2018-09-03",
+     "3",
+     "5",
+     "3",
+     "Employee",
+     "Active"
+    ],
+    [
+     "12",
+     "PV",
+     "Sindhu",
+     "F",
+     "2023-02-01",
+     "4",
+     "7",
+     "5",
+     "Employee",
+     "Active"
+    ],
+    [
+     "13",
+     "Virat",
+     "Kohli",
+     "M",
+     "2022-06-15",
+     "4",
+     "7",
+     "5",
+     "Employee",
+     "Active"
+    ],
+    [
+     "14",
+     "Naomi",
+     "Osaka",
+     "F",
+     "2017-10-23",
+     "5",
+     "9",
+     "5",
+     "Employee",
+     "Active"
+    ],
+    [
+     "15",
+     "Usain",
+     "Bolt",
+     "M",
+     "2024-01-08",
+     "6",
+     "10",
+     "1",
+     "Employee",
+     "Active"
+    ],
+    [
+     "16",
+     "Sania",
+     "Mirza",
+     "F",
+     "2021-03-22",
+     "7",
+     "10",
+     "1",
+     "Employee",
+     "Active"
+    ],
+    [
+     "17",
+     "Novak",
+     "Djokovic",
+     "M",
+     "2017-05-29",
+     "1",
+     "12",
+     "2",
+     "Employee",
+     "Active"
+    ],
+    [
+     "18",
+     "Mary",
+     "Kom",
+     "F",
+     "2020-02-17",
+     "9",
+     "13",
+     "1",
+     "Employee",
+     "Active"
+    ],
+    [
+     "19",
+     "Zlatan",
+     "Ibrahimovic",
+     "M",
+     "2016-12-05",
+     "2",
+     "3",
+     "4",
+     "Employee",
+     "Resigned"
+    ],
+    [
+     "20",
+     "Coco",
+     "Gauff",
+     "F",
+     "2025-07-14",
+     "2",
+     "2",
+     "4",
+     "Employee",
+     "Active"
+    ]
+   ],
+   "affected": 0
+  },
+  "attendance": {
+   "cols": [
+    "attendance_id",
+    "emp_id",
+    "att_date",
+    "check_in",
+    "check_out",
+    "status"
+   ],
+   "rows": [
+    [
+     "433",
+     "13",
+     "2026-09-01",
+     "09:20:00",
+     "18:37:00",
+     "Present"
+    ],
+    [
+     "452",
+     "13",
+     "2026-09-02",
+     "09:21:00",
+     "18:38:00",
+     "Present"
+    ],
+    [
+     "471",
+     "13",
+     "2026-09-03",
+     "09:22:00",
+     "18:39:00",
+     "Present"
+    ],
+    [
+     "490",
+     "13",
+     "2026-09-04",
+     "09:23:00",
+     "18:40:00",
+     "Present"
+    ],
+    [
+     "509",
+     "13",
+     "2026-09-07",
+     "NULL",
+     "NULL",
+     "Leave"
+    ],
+    [
+     "528",
+     "13",
+     "2026-09-08",
+     "NULL",
+     "NULL",
+     "Leave"
+    ],
+    [
+     "547",
+     "13",
+     "2026-09-09",
+     "NULL",
+     "NULL",
+     "Leave"
+    ],
+    [
+     "566",
+     "13",
+     "2026-09-10",
+     "09:29:00",
+     "18:46:00",
+     "Present"
+    ],
+    [
+     "585",
+     "13",
+     "2026-09-11",
+     "09:30:00",
+     "18:47:00",
+     "Present"
+    ],
+    [
+     "604",
+     "13",
+     "2026-09-14",
+     "09:33:00",
+     "18:00:00",
+     "Present"
+    ]
+   ],
+   "affected": 0
+  },
+  "leave_request": {
+   "cols": [
+    "leave_id",
+    "emp_id",
+    "leave_type",
+    "start_date",
+    "end_date",
+    "status",
+    "applied_on",
+    "approved_by"
+   ],
+   "rows": [
+    [
+     "1",
+     "6",
+     "Casual",
+     "2026-08-10",
+     "2026-08-11",
+     "Approved",
+     "2026-08-03",
+     "4"
+    ],
+    [
+     "2",
+     "7",
+     "Sick",
+     "2026-08-19",
+     "2026-08-20",
+     "Approved",
+     "2026-08-19",
+     "4"
+    ],
+    [
+     "3",
+     "12",
+     "Earned",
+     "2026-08-24",
+     "2026-08-28",
+     "Approved",
+     "2026-08-05",
+     "5"
+    ],
+    [
+     "4",
+     "13",
+     "Unpaid",
+     "2026-09-07",
+     "2026-09-09",
+     "Approved",
+     "2026-08-31",
+     "5"
+    ],
+    [
+     "5",
+     "8",
+     "Casual",
+     "2026-09-14",
+     "2026-09-14",
+     "Rejected",
+     "2026-09-10",
+     "4"
+    ],
+    [
+     "6",
+     "10",
+     "Sick",
+     "2026-09-21",
+     "2026-09-23",
+     "Approved",
+     "2026-09-18",
+     "3"
+    ],
+    [
+     "7",
+     "14",
+     "Earned",
+     "2026-09-28",
+     "2026-09-30",
+     "Approved",
+     "2026-09-12",
+     "5"
+    ],
+    [
+     "8",
+     "16",
+     "Unpaid",
+     "2026-09-16",
+     "2026-09-17",
+     "Approved",
+     "2026-09-08",
+     "1"
+    ],
+    [
+     "9",
+     "9",
+     "Casual",
+     "2026-10-05",
+     "2026-10-06",
+     "Approved",
+     "2026-09-29",
+     "4"
+    ],
+    [
+     "10",
+     "20",
+     "Sick",
+     "2026-10-15",
+     "2026-10-16",
+     "Pending",
+     "2026-10-09",
+     "NULL"
+    ],
+    [
+     "11",
+     "11",
+     "Earned",
+     "2026-10-26",
+     "2026-10-30",
+     "Pending",
+     "2026-10-07",
+     "NULL"
+    ],
+    [
+     "12",
+     "17",
+     "Casual",
+     "2026-10-19",
+     "2026-10-19",
+     "Pending",
+     "2026-10-08",
+     "NULL"
+    ],
+    [
+     "13",
+     "6",
+     "Earned",
+     "2026-11-09",
+     "2026-11-13",
+     "Pending",
+     "2026-10-09",
+     "NULL"
+    ]
+   ],
+   "affected": 0
+  },
+  "salary_component": {
+   "cols": [
+    "component_id",
+    "component_name",
+    "component_type",
+    "calc_method",
+    "value",
+    "is_taxable",
+    "is_active"
+   ],
+   "rows": [
+    [
+     "1",
+     "House Rent Allowance (HRA)",
+     "Allowance",
+     "Percent",
+     "40.00",
+     "true",
+     "true"
+    ],
+    [
+     "2",
+     "Dearness Allowance (DA)",
+     "Allowance",
+     "Percent",
+     "12.00",
+     "true",
+     "true"
+    ],
+    [
+     "3",
+     "Special Allowance",
+     "Allowance",
+     "Percent",
+     "10.00",
+     "true",
+     "true"
+    ],
+    [
+     "4",
+     "Conveyance Allowance",
+     "Allowance",
+     "Fixed",
+     "1600.00",
+     "false",
+     "true"
+    ],
+    [
+     "5",
+     "Medical Allowance",
+     "Allowance",
+     "Fixed",
+     "1250.00",
+     "false",
+     "true"
+    ],
+    [
+     "6",
+     "Internet Allowance",
+     "Allowance",
+     "Fixed",
+     "1000.00",
+     "false",
+     "true"
+    ],
+    [
+     "7",
+     "Night Shift Allowance",
+     "Allowance",
+     "Fixed",
+     "2000.00",
+     "true",
+     "false"
+    ],
+    [
+     "8",
+     "Provident Fund (PF)",
+     "Deduction",
+     "Percent",
+     "12.00",
+     "false",
+     "true"
+    ],
+    [
+     "9",
+     "Professional Tax",
+     "Deduction",
+     "Fixed",
+     "200.00",
+     "false",
+     "true"
+    ],
+    [
+     "10",
+     "Income Tax (TDS)",
+     "Deduction",
+     "Percent",
+     "5.00",
+     "false",
+     "true"
+    ],
+    [
+     "11",
+     "Group Health Insurance",
+     "Deduction",
+     "Fixed",
+     "500.00",
+     "false",
+     "true"
+    ],
+    [
+     "12",
+     "Labour Welfare Fund",
+     "Deduction",
+     "Fixed",
+     "25.00",
+     "false",
+     "false"
+    ]
+   ],
+   "affected": 0
+  },
+  "payroll": {
+   "cols": [
+    "payroll_id",
+    "emp_id",
+    "pay_month",
+    "pay_year",
+    "working_days",
+    "lop_days",
+    "basic_salary",
+    "gross_salary",
+    "total_deductions",
+    "net_salary",
+    "status"
+   ],
+   "rows": [
+    [
+     "21",
+     "1",
+     "9",
+     "2026",
+     "22",
+     "1.0",
+     "150000.00",
+     "235804.55",
+     "25040.91",
+     "210763.64",
+     "Generated"
+    ],
+    [
+     "22",
+     "2",
+     "9",
+     "2026",
+     "22",
+     "1.5",
+     "85000.00",
+     "132161.38",
+     "14164.78",
+     "117996.60",
+     "Generated"
+    ],
+    [
+     "23",
+     "3",
+     "9",
+     "2026",
+     "22",
+     "0.0",
+     "52000.00",
+     "88090.00",
+     "9540.00",
+     "78550.00",
+     "Generated"
+    ],
+    [
+     "24",
+     "4",
+     "9",
+     "2026",
+     "22",
+     "1.0",
+     "95000.00",
+     "150754.55",
+     "16115.91",
+     "134638.64",
+     "Generated"
+    ],
+    [
+     "25",
+     "5",
+     "9",
+     "2026",
+     "22",
+     "1.0",
+     "80000.00",
+     "127559.10",
+     "13681.82",
+     "113877.28",
+     "Generated"
+    ],
+    [
+     "26",
+     "6",
+     "9",
+     "2026",
+     "22",
+     "1.5",
+     "65000.00",
+     "101970.45",
+     "10996.59",
+     "90973.86",
+     "Generated"
+    ],
+    [
+     "27",
+     "7",
+     "9",
+     "2026",
+     "22",
+     "1.0",
+     "45000.00",
+     "73436.38",
+     "8002.28",
+     "65434.10",
+     "Generated"
+    ],
+    [
+     "28",
+     "8",
+     "9",
+     "2026",
+     "22",
+     "0.5",
+     "45000.00",
+     "75093.18",
+     "8176.13",
+     "66917.05",
+     "Generated"
+    ],
+    [
+     "29",
+     "9",
+     "9",
+     "2026",
+     "22",
+     "0.5",
+     "45000.00",
+     "75093.18",
+     "8176.13",
+     "66917.05",
+     "Generated"
+    ],
+    [
+     "30",
+     "10",
+     "9",
+     "2026",
+     "22",
+     "1.0",
+     "40000.00",
+     "65704.55",
+     "7190.91",
+     "58513.64",
+     "Generated"
+    ],
+    [
+     "31",
+     "11",
+     "9",
+     "2026",
+     "22",
+     "1.5",
+     "40000.00",
+     "64231.82",
+     "7036.37",
+     "57195.45",
+     "Generated"
+    ],
+    [
+     "32",
+     "12",
+     "9",
+     "2026",
+     "22",
+     "1.5",
+     "30000.00",
+     "49136.38",
+     "5452.28",
+     "43684.10",
+     "Generated"
+    ]
+   ],
+   "affected": 0
+  },
+  "payroll_detail": {
+   "cols": [
+    "payroll_id",
+    "component_id",
+    "component_name",
+    "amount"
+   ],
+   "rows": [
+    [
+     "26",
+     "1",
+     "House Rent Allowance (HRA)",
+     "24227.27"
+    ],
+    [
+     "26",
+     "2",
+     "Dearness Allowance (DA)",
+     "7268.18"
+    ],
+    [
+     "26",
+     "3",
+     "Special Allowance",
+     "6056.82"
+    ],
+    [
+     "26",
+     "4",
+     "Conveyance Allowance",
+     "1600.00"
+    ],
+    [
+     "26",
+     "5",
+     "Medical Allowance",
+     "1250.00"
+    ],
+    [
+     "26",
+     "6",
+     "Internet Allowance",
+     "1000.00"
+    ],
+    [
+     "26",
+     "8",
+     "Provident Fund (PF)",
+     "7268.18"
+    ],
+    [
+     "26",
+     "9",
+     "Professional Tax",
+     "200.00"
+    ],
+    [
+     "26",
+     "10",
+     "Income Tax (TDS)",
+     "3028.41"
+    ],
+    [
+     "26",
+     "11",
+     "Group Health Insurance",
+     "500.00"
+    ]
+   ],
+   "affected": 0
+  }
+ },
+ "queries": [
+  {
+   "id": 1,
+   "title": "Employee directory with department, designation and manager",
+   "concepts": [
+    "INNER JOIN",
+    "LEFT SELF-JOIN"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       d.dept_name,\n       g.title AS designation,\n       m.first_name || ' ' || m.last_name AS manager,\n       e.status\n  FROM employee e\n  JOIN department  d ON d.dept_id  = e.dept_id\n  JOIN designation g ON g.desig_id = e.desig_id\n  LEFT JOIN employee m ON m.emp_id = e.reports_to\n ORDER BY e.emp_id",
+   "total": 20,
+   "cols": [
+    "emp_id",
+    "employee",
+    "dept_name",
+    "designation",
+    "manager",
+    "status"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Administration",
+     "Director",
+     "NULL",
+     "Active"
+    ],
+    [
+     "2",
+     "Daniel Dumile",
+     "Human Resources",
+     "HR Manager",
+     "Sachin Tendulkar",
+     "Active"
+    ],
+    [
+     "3",
+     "Jeffery Williams",
+     "Finance",
+     "Payroll Officer",
+     "Sachin Tendulkar",
+     "Active"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "Engineering",
+     "Engineering Manager",
+     "Sachin Tendulkar",
+     "Active"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "Sales",
+     "Sales Manager",
+     "Sachin Tendulkar",
+     "Active"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "Engineering",
+     "Senior Software Engineer",
+     "Aubrey Graham",
+     "Active"
+    ],
+    [
+     "7",
+     "Cristiano Ronaldo",
+     "Engineering",
+     "Software Engineer",
+     "Aubrey Graham",
+     "Active"
+    ],
+    [
+     "8",
+     "Serena Williams",
+     "Engineering",
+     "Software Engineer",
+     "Aubrey Graham",
+     "Active"
+    ],
+    [
+     "9",
+     "Lionel Messi",
+     "Quality Assurance",
+     "Software Engineer",
+     "Aubrey Graham",
+     "Active"
+    ],
+    [
+     "10",
+     "Simone Biles",
+     "Finance",
+     "Accountant",
+     "Jeffery Williams",
+     "Active"
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "title": "Head-count and average basic salary of every department (including empty ones)",
+   "concepts": [
+    "LEFT JOIN",
+    "GROUP BY",
+    "COUNT / AVG"
+   ],
+   "sql": "SELECT d.dept_name,\n       d.location,\n       COUNT(e.emp_id) AS active_employees,\n       ROUND(AVG(g.basic_salary), 2) AS avg_basic_salary\n  FROM department d\n  LEFT JOIN employee e    ON e.dept_id = d.dept_id AND e.status = 'Active'\n  LEFT JOIN designation g ON g.desig_id = e.desig_id\n GROUP BY d.dept_id, d.dept_name, d.location\n ORDER BY active_employees DESC, d.dept_name",
+   "total": 10,
+   "cols": [
+    "dept_name",
+    "location",
+    "active_employees",
+    "avg_basic_salary"
+   ],
+   "rows": [
+    [
+     "Engineering",
+     "Bengaluru",
+     "5",
+     "59000.00"
+    ],
+    [
+     "Finance",
+     "Chennai",
+     "3",
+     "44000.00"
+    ],
+    [
+     "Sales",
+     "Mumbai",
+     "3",
+     "46666.67"
+    ],
+    [
+     "Human Resources",
+     "Chennai",
+     "2",
+     "61500.00"
+    ],
+    [
+     "Administration",
+     "Vellore",
+     "1",
+     "150000.00"
+    ],
+    [
+     "Customer Support",
+     "Hyderabad",
+     "1",
+     "28000.00"
+    ],
+    [
+     "Legal",
+     "New Delhi",
+     "1",
+     "70000.00"
+    ],
+    [
+     "Marketing",
+     "Mumbai",
+     "1",
+     "42000.00"
+    ],
+    [
+     "Operations",
+     "Pune",
+     "1",
+     "28000.00"
+    ],
+    [
+     "Quality Assurance",
+     "Bengaluru",
+     "1",
+     "45000.00"
+    ]
+   ]
+  },
+  {
+   "id": 3,
+   "title": "Employees whose basic salary is above the company average",
+   "concepts": [
+    "Scalar subquery",
+    "Comparison"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       g.title,\n       g.basic_salary\n  FROM employee e\n  JOIN designation g ON g.desig_id = e.desig_id\n WHERE e.status = 'Active'\n   AND g.basic_salary > (SELECT AVG(g2.basic_salary)\n                           FROM employee e2\n                           JOIN designation g2 ON g2.desig_id = e2.desig_id\n                          WHERE e2.status = 'Active')\n ORDER BY g.basic_salary DESC",
+   "total": 6,
+   "cols": [
+    "emp_id",
+    "employee",
+    "title",
+    "basic_salary"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Director",
+     "150000.00"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "Engineering Manager",
+     "95000.00"
+    ],
+    [
+     "2",
+     "Daniel Dumile",
+     "HR Manager",
+     "85000.00"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "Sales Manager",
+     "80000.00"
+    ],
+    [
+     "18",
+     "Mary Kom",
+     "Legal Counsel",
+     "70000.00"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "Senior Software Engineer",
+     "65000.00"
+    ]
+   ]
+  },
+  {
+   "id": 4,
+   "title": "Department-wise salary cost for the latest payroll month",
+   "concepts": [
+    "CTE (WITH)",
+    "JOIN",
+    "SUM",
+    "GROUP BY"
+   ],
+   "sql": "WITH latest AS (\n    SELECT pay_month, pay_year\n      FROM payroll\n     ORDER BY pay_year DESC, pay_month DESC\n     LIMIT 1\n)\nSELECT d.dept_name,\n       COUNT(*)              AS employees_paid,\n       SUM(p.gross_salary)   AS total_gross,\n       SUM(p.total_deductions) AS total_deductions,\n       SUM(p.net_salary)     AS total_net\n  FROM payroll p\n  JOIN latest l     ON l.pay_month = p.pay_month AND l.pay_year = p.pay_year\n  JOIN employee e   ON e.emp_id = p.emp_id\n  JOIN department d ON d.dept_id = e.dept_id\n GROUP BY d.dept_name\n ORDER BY total_net DESC",
+   "total": 10,
+   "cols": [
+    "dept_name",
+    "employees_paid",
+    "total_gross",
+    "total_deductions",
+    "total_net"
+   ],
+   "rows": [
+    [
+     "Engineering",
+     "5",
+     "473034.11",
+     "51119.32",
+     "421914.79"
+    ],
+    [
+     "Administration",
+     "1",
+     "235804.55",
+     "25040.91",
+     "210763.64"
+    ],
+    [
+     "Sales",
+     "3",
+     "222518.21",
+     "24238.64",
+     "198279.57"
+    ],
+    [
+     "Finance",
+     "3",
+     "218026.37",
+     "23767.28",
+     "194259.09"
+    ],
+    [
+     "Human Resources",
+     "2",
+     "193374.11",
+     "20884.32",
+     "172489.79"
+    ],
+    [
+     "Legal",
+     "1",
+     "114672.73",
+     "12329.54",
+     "102343.19"
+    ],
+    [
+     "Quality Assurance",
+     "1",
+     "75093.18",
+     "8176.13",
+     "66917.05"
+    ],
+    [
+     "Marketing",
+     "1",
+     "71890.00",
+     "7840.00",
+     "64050.00"
+    ],
+    [
+     "Operations",
+     "1",
+     "49210.00",
+     "5460.00",
+     "43750.00"
+    ],
+    [
+     "Customer Support",
+     "1",
+     "43024.55",
+     "4810.91",
+     "38213.64"
+    ]
+   ]
+  },
+  {
+   "id": 5,
+   "title": "Top 5 earners by net salary in the latest month (with rank)",
+   "concepts": [
+    "Window function RANK()",
+    "ORDER BY",
+    "LIMIT"
+   ],
+   "sql": "WITH latest AS (\n    SELECT pay_month, pay_year\n      FROM payroll\n     ORDER BY pay_year DESC, pay_month DESC\n     LIMIT 1\n)\nSELECT RANK() OVER (ORDER BY p.net_salary DESC) AS rank,\n       e.first_name || ' ' || e.last_name AS employee,\n       g.title,\n       p.net_salary\n  FROM payroll p\n  JOIN latest l      ON l.pay_month = p.pay_month AND l.pay_year = p.pay_year\n  JOIN employee e    ON e.emp_id = p.emp_id\n  JOIN designation g ON g.desig_id = e.desig_id\n ORDER BY p.net_salary DESC\n LIMIT 5",
+   "total": 5,
+   "cols": [
+    "rank",
+    "employee",
+    "title",
+    "net_salary"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Director",
+     "210763.64"
+    ],
+    [
+     "2",
+     "Aubrey Graham",
+     "Engineering Manager",
+     "134638.64"
+    ],
+    [
+     "3",
+     "Daniel Dumile",
+     "HR Manager",
+     "117996.60"
+    ],
+    [
+     "4",
+     "Michael Jordan",
+     "Sales Manager",
+     "113877.28"
+    ],
+    [
+     "5",
+     "Mary Kom",
+     "Legal Counsel",
+     "102343.19"
+    ]
+   ]
+  },
+  {
+   "id": 6,
+   "title": "Attendance summary of every employee for September 2026",
+   "concepts": [
+    "Conditional aggregation (FILTER)",
+    "GROUP BY"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       COUNT(*) FILTER (WHERE a.status = 'Present')  AS present,\n       COUNT(*) FILTER (WHERE a.status = 'Half-Day') AS half_days,\n       COUNT(*) FILTER (WHERE a.status = 'Absent')   AS absent,\n       COUNT(*) FILTER (WHERE a.status = 'Leave')    AS on_leave\n  FROM employee e\n  JOIN attendance a ON a.emp_id = e.emp_id\n WHERE a.att_date BETWEEN DATE '2026-09-01' AND DATE '2026-09-30'\n GROUP BY e.emp_id, e.first_name, e.last_name\n ORDER BY absent DESC, half_days DESC, e.emp_id",
+   "total": 19,
+   "cols": [
+    "emp_id",
+    "employee",
+    "present",
+    "half_days",
+    "absent",
+    "on_leave"
+   ],
+   "rows": [
+    [
+     "2",
+     "Daniel Dumile",
+     "20",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "20",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "11",
+     "Rafael Nadal",
+     "20",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "12",
+     "PV Sindhu",
+     "20",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "17",
+     "Novak Djokovic",
+     "20",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "20",
+     "Coco Gauff",
+     "20",
+     "1",
+     "1",
+     "0"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "21",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "21",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "21",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "7",
+     "Cristiano Ronaldo",
+     "21",
+     "0",
+     "1",
+     "0"
+    ]
+   ]
+  },
+  {
+   "id": 7,
+   "title": "Employees who lost pay (LOP) in any month, with the amount lost",
+   "concepts": [
+    "WHERE filter",
+    "Arithmetic expression",
+    "JOIN"
+   ],
+   "sql": "SELECT p.pay_month,\n       p.pay_year,\n       e.first_name || ' ' || e.last_name AS employee,\n       p.lop_days,\n       ROUND(p.basic_salary / p.working_days * p.lop_days, 2) AS basic_lost\n  FROM payroll p\n  JOIN employee e ON e.emp_id = p.emp_id\n WHERE p.lop_days > 0\n ORDER BY p.pay_year, p.pay_month, basic_lost DESC",
+   "total": 32,
+   "cols": [
+    "pay_month",
+    "pay_year",
+    "employee",
+    "lop_days",
+    "basic_lost"
+   ],
+   "rows": [
+    [
+     "8",
+     "2026",
+     "Michael Jordan",
+     "1.5",
+     "5714.29"
+    ],
+    [
+     "8",
+     "2026",
+     "Mary Kom",
+     "1.5",
+     "5000.00"
+    ],
+    [
+     "8",
+     "2026",
+     "Sachin Tendulkar",
+     "0.5",
+     "3571.43"
+    ],
+    [
+     "8",
+     "2026",
+     "Coco Gauff",
+     "1.5",
+     "3214.29"
+    ],
+    [
+     "8",
+     "2026",
+     "Serena Williams",
+     "1.5",
+     "3214.29"
+    ],
+    [
+     "8",
+     "2026",
+     "Zlatan Ibrahimovic",
+     "1.0",
+     "3095.24"
+    ],
+    [
+     "8",
+     "2026",
+     "Jeffery Williams",
+     "1.0",
+     "2476.19"
+    ],
+    [
+     "8",
+     "2026",
+     "Lionel Messi",
+     "1.0",
+     "2142.86"
+    ],
+    [
+     "8",
+     "2026",
+     "Naomi Osaka",
+     "1.0",
+     "2000.00"
+    ],
+    [
+     "8",
+     "2026",
+     "Usain Bolt",
+     "1.5",
+     "2000.00"
+    ]
+   ]
+  },
+  {
+   "id": 8,
+   "title": "Remaining 2026 leave balance of every active employee",
+   "concepts": [
+    "User-defined FUNCTION in SELECT"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       g.annual_leave_quota AS quota,\n       fn_leave_balance(e.emp_id, 2026) AS balance\n  FROM employee e\n  JOIN designation g ON g.desig_id = e.desig_id\n WHERE e.status = 'Active'\n ORDER BY balance, e.emp_id",
+   "total": 19,
+   "cols": [
+    "emp_id",
+    "employee",
+    "quota",
+    "balance"
+   ],
+   "rows": [
+    [
+     "12",
+     "PV Sindhu",
+     "18",
+     "13"
+    ],
+    [
+     "10",
+     "Simone Biles",
+     "20",
+     "17"
+    ],
+    [
+     "14",
+     "Naomi Osaka",
+     "20",
+     "17"
+    ],
+    [
+     "7",
+     "Cristiano Ronaldo",
+     "20",
+     "18"
+    ],
+    [
+     "9",
+     "Lionel Messi",
+     "20",
+     "18"
+    ],
+    [
+     "13",
+     "Virat Kohli",
+     "18",
+     "18"
+    ],
+    [
+     "15",
+     "Usain Bolt",
+     "18",
+     "18"
+    ],
+    [
+     "16",
+     "Sania Mirza",
+     "18",
+     "18"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "22",
+     "20"
+    ],
+    [
+     "8",
+     "Serena Williams",
+     "20",
+     "20"
+    ]
+   ]
+  },
+  {
+   "id": 9,
+   "title": "Pending leave requests and the manager who must approve them",
+   "concepts": [
+    "Self-join",
+    "Date arithmetic"
+   ],
+   "sql": "SELECT lr.leave_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       lr.leave_type,\n       lr.start_date,\n       lr.end_date,\n       (lr.end_date - lr.start_date + 1) AS calendar_days,\n       COALESCE(m.first_name || ' ' || m.last_name, '(Admin)') AS approver\n  FROM leave_request lr\n  JOIN employee e      ON e.emp_id = lr.emp_id\n  LEFT JOIN employee m ON m.emp_id = e.reports_to\n WHERE lr.status = 'Pending'\n ORDER BY lr.start_date",
+   "total": 4,
+   "cols": [
+    "leave_id",
+    "employee",
+    "leave_type",
+    "start_date",
+    "end_date",
+    "calendar_days",
+    "approver"
+   ],
+   "rows": [
+    [
+     "10",
+     "Coco Gauff",
+     "Sick",
+     "2026-10-15",
+     "2026-10-16",
+     "2",
+     "Aubrey Graham"
+    ],
+    [
+     "12",
+     "Novak Djokovic",
+     "Casual",
+     "2026-10-19",
+     "2026-10-19",
+     "1",
+     "Daniel Dumile"
+    ],
+    [
+     "11",
+     "Rafael Nadal",
+     "Earned",
+     "2026-10-26",
+     "2026-10-30",
+     "5",
+     "Jeffery Williams"
+    ],
+    [
+     "13",
+     "LeBron James",
+     "Earned",
+     "2026-11-09",
+     "2026-11-13",
+     "5",
+     "Aubrey Graham"
+    ]
+   ]
+  },
+  {
+   "id": 10,
+   "title": "Managers with at least 3 direct reports",
+   "concepts": [
+    "Self-join",
+    "GROUP BY",
+    "HAVING"
+   ],
+   "sql": "SELECT m.emp_id,\n       m.first_name || ' ' || m.last_name AS manager,\n       COUNT(e.emp_id) AS direct_reports\n  FROM employee m\n  JOIN employee e ON e.reports_to = m.emp_id AND e.status = 'Active'\n GROUP BY m.emp_id, m.first_name, m.last_name\nHAVING COUNT(e.emp_id) >= 3\n ORDER BY direct_reports DESC",
+   "total": 3,
+   "cols": [
+    "emp_id",
+    "manager",
+    "direct_reports"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "7"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "5"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "3"
+    ]
+   ]
+  },
+  {
+   "id": 11,
+   "title": "Itemised payslip lines of every employee for the latest month",
+   "concepts": [
+    "4-table JOIN",
+    "M:N bridge table"
+   ],
+   "sql": "WITH latest AS (\n    SELECT pay_month, pay_year\n      FROM payroll\n     ORDER BY pay_year DESC, pay_month DESC\n     LIMIT 1\n)\nSELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       c.component_type,\n       c.component_name,\n       pd.amount\n  FROM payroll p\n  JOIN latest l           ON l.pay_month = p.pay_month AND l.pay_year = p.pay_year\n  JOIN employee e         ON e.emp_id = p.emp_id\n  JOIN payroll_detail pd  ON pd.payroll_id = p.payroll_id\n  JOIN salary_component c ON c.component_id = pd.component_id\n ORDER BY e.emp_id, c.component_type, pd.amount DESC",
+   "total": 190,
+   "cols": [
+    "emp_id",
+    "employee",
+    "component_type",
+    "component_name",
+    "amount"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Allowance",
+     "House Rent Allowance (HRA)",
+     "57272.73"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Allowance",
+     "Dearness Allowance (DA)",
+     "17181.82"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Allowance",
+     "Special Allowance",
+     "14318.18"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Allowance",
+     "Conveyance Allowance",
+     "1600.00"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Allowance",
+     "Medical Allowance",
+     "1250.00"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Allowance",
+     "Internet Allowance",
+     "1000.00"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Deduction",
+     "Provident Fund (PF)",
+     "17181.82"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Deduction",
+     "Income Tax (TDS)",
+     "7159.09"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Deduction",
+     "Group Health Insurance",
+     "500.00"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Deduction",
+     "Professional Tax",
+     "200.00"
+    ]
+   ]
+  },
+  {
+   "id": 12,
+   "title": "Active employees who have not taken any approved leave in 2026",
+   "concepts": [
+    "NOT EXISTS (correlated subquery)"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       d.dept_name\n  FROM employee e\n  JOIN department d ON d.dept_id = e.dept_id\n WHERE e.status = 'Active'\n   AND NOT EXISTS (SELECT 1\n                     FROM leave_request lr\n                    WHERE lr.emp_id = e.emp_id\n                      AND lr.status = 'Approved'\n                      AND EXTRACT(YEAR FROM lr.start_date) = 2026)\n ORDER BY e.emp_id",
+   "total": 11,
+   "cols": [
+    "emp_id",
+    "employee",
+    "dept_name"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Administration"
+    ],
+    [
+     "2",
+     "Daniel Dumile",
+     "Human Resources"
+    ],
+    [
+     "3",
+     "Jeffery Williams",
+     "Finance"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "Engineering"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "Sales"
+    ],
+    [
+     "8",
+     "Serena Williams",
+     "Engineering"
+    ],
+    [
+     "11",
+     "Rafael Nadal",
+     "Finance"
+    ],
+    [
+     "15",
+     "Usain Bolt",
+     "Operations"
+    ],
+    [
+     "17",
+     "Novak Djokovic",
+     "Human Resources"
+    ],
+    [
+     "18",
+     "Mary Kom",
+     "Legal"
+    ]
+   ]
+  },
+  {
+   "id": 13,
+   "title": "Month-by-month payroll totals and payment status",
+   "concepts": [
+    "GROUP BY multiple columns",
+    "SUM",
+    "CASE"
+   ],
+   "sql": "SELECT pay_year,\n       pay_month,\n       COUNT(*) AS payslips,\n       SUM(gross_salary) AS total_gross,\n       SUM(net_salary)   AS total_net,\n       CASE WHEN BOOL_AND(status = 'Paid') THEN 'All paid'\n            ELSE COUNT(*) FILTER (WHERE status <> 'Paid') || ' unpaid' END AS payment_status\n  FROM payroll\n GROUP BY pay_year, pay_month\n ORDER BY pay_year, pay_month",
+   "total": 2,
+   "cols": [
+    "pay_year",
+    "pay_month",
+    "payslips",
+    "total_gross",
+    "total_net",
+    "payment_status"
+   ],
+   "rows": [
+    [
+     "2026",
+     "8",
+     "20",
+     "1825944.25",
+     "1628413.03",
+     "All paid"
+    ],
+    [
+     "2026",
+     "9",
+     "19",
+     "1696647.81",
+     "1512980.76",
+     "19 unpaid"
+    ]
+   ]
+  },
+  {
+   "id": 14,
+   "title": "Departments whose average net salary is above the company average (latest month)",
+   "concepts": [
+    "HAVING with subquery",
+    "AVG"
+   ],
+   "sql": "WITH latest AS (\n    SELECT pay_month, pay_year\n      FROM payroll\n     ORDER BY pay_year DESC, pay_month DESC\n     LIMIT 1\n)\nSELECT d.dept_name,\n       ROUND(AVG(p.net_salary), 2) AS avg_net_salary\n  FROM payroll p\n  JOIN latest l     ON l.pay_month = p.pay_month AND l.pay_year = p.pay_year\n  JOIN employee e   ON e.emp_id = p.emp_id\n  JOIN department d ON d.dept_id = e.dept_id\n GROUP BY d.dept_name\nHAVING AVG(p.net_salary) > (SELECT AVG(p2.net_salary)\n                              FROM payroll p2\n                              JOIN latest l2 ON l2.pay_month = p2.pay_month AND l2.pay_year = p2.pay_year)\n ORDER BY avg_net_salary DESC",
+   "total": 4,
+   "cols": [
+    "dept_name",
+    "avg_net_salary"
+   ],
+   "rows": [
+    [
+     "Administration",
+     "210763.64"
+    ],
+    [
+     "Legal",
+     "102343.19"
+    ],
+    [
+     "Human Resources",
+     "86244.90"
+    ],
+    [
+     "Engineering",
+     "84382.96"
+    ]
+   ]
+  },
+  {
+   "id": 15,
+   "title": "Age and tenure of every active employee (derived attributes)",
+   "concepts": [
+    "Date functions AGE() / EXTRACT",
+    "Derived attributes"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.dob))::INT AS age,\n       e.date_of_joining,\n       EXTRACT(YEAR FROM AGE(CURRENT_DATE, e.date_of_joining))::INT AS years_of_service\n  FROM employee e\n WHERE e.status = 'Active'\n ORDER BY years_of_service DESC, e.emp_id",
+   "total": 19,
+   "cols": [
+    "emp_id",
+    "employee",
+    "age",
+    "date_of_joining",
+    "years_of_service"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "51",
+     "2012-06-01",
+     "14"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "43",
+     "2013-08-05",
+     "13"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "41",
+     "2014-01-20",
+     "12"
+    ],
+    [
+     "2",
+     "Daniel Dumile",
+     "41",
+     "2015-03-16",
+     "11"
+    ],
+    [
+     "3",
+     "Jeffery Williams",
+     "38",
+     "2016-07-11",
+     "10"
+    ],
+    [
+     "17",
+     "Novak Djokovic",
+     "34",
+     "2017-05-29",
+     "9"
+    ],
+    [
+     "11",
+     "Rafael Nadal",
+     "32",
+     "2018-09-03",
+     "8"
+    ],
+    [
+     "14",
+     "Naomi Osaka",
+     "33",
+     "2017-10-23",
+     "8"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "30",
+     "2019-07-01",
+     "7"
+    ],
+    [
+     "10",
+     "Simone Biles",
+     "30",
+     "2019-04-08",
+     "7"
+    ]
+   ]
+  },
+  {
+   "id": 16,
+   "title": "Total paid out per salary component in the latest month",
+   "concepts": [
+    "JOIN",
+    "GROUP BY",
+    "ROLLUP-style totals with UNION ALL"
+   ],
+   "sql": "WITH latest AS (\n    SELECT pay_month, pay_year\n      FROM payroll\n     ORDER BY pay_year DESC, pay_month DESC\n     LIMIT 1\n),\nlines AS (\n    SELECT c.component_type, c.component_name, pd.amount\n      FROM payroll p\n      JOIN latest l           ON l.pay_month = p.pay_month AND l.pay_year = p.pay_year\n      JOIN payroll_detail pd  ON pd.payroll_id = p.payroll_id\n      JOIN salary_component c ON c.component_id = pd.component_id\n)\nSELECT component_type, component_name, SUM(amount) AS total\n  FROM lines\n GROUP BY component_type, component_name\nUNION ALL\nSELECT component_type, '— TOTAL ' || UPPER(component_type) || 'S', SUM(amount)\n  FROM lines\n GROUP BY component_type\n ORDER BY component_type, total",
+   "total": 12,
+   "cols": [
+    "component_type",
+    "component_name",
+    "total"
+   ],
+   "rows": [
+    [
+     "Allowance",
+     "Internet Allowance",
+     "19000.00"
+    ],
+    [
+     "Allowance",
+     "Medical Allowance",
+     "23750.00"
+    ],
+    [
+     "Allowance",
+     "Conveyance Allowance",
+     "30400.00"
+    ],
+    [
+     "Allowance",
+     "Special Allowance",
+     "100215.92"
+    ],
+    [
+     "Allowance",
+     "Dearness Allowance (DA)",
+     "120259.11"
+    ],
+    [
+     "Allowance",
+     "House Rent Allowance (HRA)",
+     "400863.67"
+    ],
+    [
+     "Allowance",
+     "— TOTAL ALLOWANCES",
+     "694488.70"
+    ],
+    [
+     "Deduction",
+     "Professional Tax",
+     "3800.00"
+    ],
+    [
+     "Deduction",
+     "Group Health Insurance",
+     "9500.00"
+    ],
+    [
+     "Deduction",
+     "Income Tax (TDS)",
+     "50107.94"
+    ]
+   ]
+  },
+  {
+   "id": 17,
+   "title": "Employees who were both absent and on approved leave in September",
+   "concepts": [
+    "INTERSECT (set operation)"
+   ],
+   "sql": "SELECT e.emp_id, e.first_name || ' ' || e.last_name AS employee\n  FROM employee e\n  JOIN attendance a ON a.emp_id = e.emp_id\n WHERE a.status IN ('Absent', 'Half-Day')\n   AND a.att_date BETWEEN DATE '2026-09-01' AND DATE '2026-09-30'\nINTERSECT\nSELECT e.emp_id, e.first_name || ' ' || e.last_name\n  FROM employee e\n  JOIN leave_request lr ON lr.emp_id = e.emp_id\n WHERE lr.status = 'Approved'\n   AND lr.start_date <= DATE '2026-09-30' AND lr.end_date >= DATE '2026-09-01'\n ORDER BY emp_id",
+   "total": 2,
+   "cols": [
+    "emp_id",
+    "employee"
+   ],
+   "rows": [
+    [
+     "10",
+     "Simone Biles"
+    ],
+    [
+     "16",
+     "Sania Mirza"
+    ]
+   ]
+  },
+  {
+   "id": 18,
+   "title": "Everyone with leadership responsibility: department heads or people managers",
+   "concepts": [
+    "UNION (set operation)",
+    "IN subquery"
+   ],
+   "sql": "SELECT e.emp_id, e.first_name || ' ' || e.last_name AS employee, 'Department head' AS responsibility\n  FROM employee e\n WHERE e.emp_id IN (SELECT head_emp_id FROM department WHERE head_emp_id IS NOT NULL)\nUNION\nSELECT m.emp_id, m.first_name || ' ' || m.last_name, 'People manager'\n  FROM employee m\n WHERE EXISTS (SELECT 1 FROM employee e WHERE e.reports_to = m.emp_id AND e.status = 'Active')\n ORDER BY emp_id, responsibility",
+   "total": 11,
+   "cols": [
+    "emp_id",
+    "employee",
+    "responsibility"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "Department head"
+    ],
+    [
+     "1",
+     "Sachin Tendulkar",
+     "People manager"
+    ],
+    [
+     "2",
+     "Daniel Dumile",
+     "Department head"
+    ],
+    [
+     "2",
+     "Daniel Dumile",
+     "People manager"
+    ],
+    [
+     "3",
+     "Jeffery Williams",
+     "Department head"
+    ],
+    [
+     "3",
+     "Jeffery Williams",
+     "People manager"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "Department head"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "People manager"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "Department head"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "People manager"
+    ]
+   ]
+  },
+  {
+   "id": 19,
+   "title": "Employees who checked in after 09:35 more than 10 times since August",
+   "concepts": [
+    "Time comparison",
+    "GROUP BY",
+    "HAVING"
+   ],
+   "sql": "SELECT e.emp_id,\n       e.first_name || ' ' || e.last_name AS employee,\n       COUNT(*) AS late_days,\n       MAX(a.check_in) AS latest_check_in\n  FROM attendance a\n  JOIN employee e ON e.emp_id = a.emp_id\n WHERE a.check_in > TIME '09:35'\n GROUP BY e.emp_id, e.first_name, e.last_name\nHAVING COUNT(*) > 10\n ORDER BY late_days DESC",
+   "total": 10,
+   "cols": [
+    "emp_id",
+    "employee",
+    "late_days",
+    "latest_check_in"
+   ],
+   "rows": [
+    [
+     "11",
+     "Rafael Nadal",
+     "14",
+     "09:44:00"
+    ],
+    [
+     "12",
+     "PV Sindhu",
+     "14",
+     "09:44:00"
+    ],
+    [
+     "13",
+     "Virat Kohli",
+     "14",
+     "09:44:00"
+    ],
+    [
+     "18",
+     "Mary Kom",
+     "13",
+     "09:44:00"
+    ],
+    [
+     "5",
+     "Michael Jordan",
+     "13",
+     "09:44:00"
+    ],
+    [
+     "17",
+     "Novak Djokovic",
+     "12",
+     "09:44:00"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "11",
+     "09:44:00"
+    ],
+    [
+     "20",
+     "Coco Gauff",
+     "11",
+     "09:44:00"
+    ],
+    [
+     "4",
+     "Aubrey Graham",
+     "11",
+     "09:43:00"
+    ],
+    [
+     "7",
+     "Cristiano Ronaldo",
+     "11",
+     "09:44:00"
+    ]
+   ]
+  }
+ ],
+ "functions": {
+  "working_days": {
+   "cols": [
+    "aug_2026",
+    "sep_2026",
+    "oct_2026"
+   ],
+   "rows": [
+    [
+     "21",
+     "22",
+     "22"
+    ]
+   ],
+   "affected": 0
+  },
+  "component_amount": {
+   "cols": [
+    "component_name",
+    "calc_method",
+    "value",
+    "amount_for_basic_45000"
+   ],
+   "rows": [
+    [
+     "House Rent Allowance (HRA)",
+     "Percent",
+     "40.00",
+     "18000.00"
+    ],
+    [
+     "Dearness Allowance (DA)",
+     "Percent",
+     "12.00",
+     "5400.00"
+    ],
+    [
+     "Special Allowance",
+     "Percent",
+     "10.00",
+     "4500.00"
+    ],
+    [
+     "Conveyance Allowance",
+     "Fixed",
+     "1600.00",
+     "1600.00"
+    ],
+    [
+     "Medical Allowance",
+     "Fixed",
+     "1250.00",
+     "1250.00"
+    ],
+    [
+     "Internet Allowance",
+     "Fixed",
+     "1000.00",
+     "1000.00"
+    ],
+    [
+     "Provident Fund (PF)",
+     "Percent",
+     "12.00",
+     "5400.00"
+    ],
+    [
+     "Professional Tax",
+     "Fixed",
+     "200.00",
+     "200.00"
+    ],
+    [
+     "Income Tax (TDS)",
+     "Percent",
+     "5.00",
+     "2250.00"
+    ],
+    [
+     "Group Health Insurance",
+     "Fixed",
+     "500.00",
+     "500.00"
+    ]
+   ],
+   "affected": 0
+  },
+  "lop_days": {
+   "cols": [
+    "emp_id",
+    "employee",
+    "lop_sep_2026"
+   ],
+   "rows": [
+    [
+     "2",
+     "Daniel Dumile",
+     "1.5"
+    ],
+    [
+     "10",
+     "Simone Biles",
+     "1"
+    ],
+    [
+     "13",
+     "Virat Kohli",
+     "3"
+    ],
+    [
+     "16",
+     "Sania Mirza",
+     "3"
+    ]
+   ],
+   "affected": 0
+  },
+  "leave_balance": {
+   "cols": [
+    "emp_id",
+    "employee",
+    "quota",
+    "balance"
+   ],
+   "rows": [
+    [
+     "6",
+     "LeBron James",
+     "22",
+     "20"
+    ],
+    [
+     "7",
+     "Cristiano Ronaldo",
+     "20",
+     "18"
+    ],
+    [
+     "12",
+     "PV Sindhu",
+     "18",
+     "13"
+    ],
+    [
+     "14",
+     "Naomi Osaka",
+     "20",
+     "17"
+    ]
+   ],
+   "affected": 0
+  }
+ },
+ "dml": [
+  {
+   "title": "INSERT a new employee",
+   "sql": "INSERT INTO employee (first_name, last_name, email, phone, gender, dob, date_of_joining,\n                      pan_no, bank_account_no, ifsc_code, dept_id, desig_id, reports_to)\nVALUES ('Kylian', 'Mbappe', 'kylian.mbappe@allcaps.example', '9840012321', 'M', '1998-12-20',\n        '2026-10-01', 'AUKPM1221F', '501000123421', 'HDFC0001201', 2, 2, 4)\nRETURNING emp_id, first_name, last_name, status, app_role;",
+   "note": "status and app_role take their DEFAULT values ('Active', 'Employee').",
+   "result": {
+    "ok": true,
+    "cols": [
+     "emp_id",
+     "first_name",
+     "last_name",
+     "status",
+     "app_role"
+    ],
+    "rows": [
+     [
+      "21",
+      "Kylian",
+      "Mbappe",
+      "Active",
+      "Employee"
+     ]
+    ],
+    "affected": 1
+   }
+  },
+  {
+   "title": "INSERT rejected by CHECK constraint (invalid PAN format)",
+   "sql": "INSERT INTO employee (first_name, last_name, email, phone, gender, dob, date_of_joining,\n                      pan_no, bank_account_no, ifsc_code, dept_id, desig_id)\nVALUES ('Test', 'User', 'test.user@allcaps.example', '9840012399', 'M', '1999-01-01',\n        '2026-10-01', 'BADPAN', '501000999999', 'HDFC0001201', 2, 2);",
+   "note": "The PAN must match ^[A-Z]{5}[0-9]{4}[A-Z]$.",
+   "result": {
+    "ok": false,
+    "error": "new row for relation \"employee\" violates check constraint \"employee_pan_no_check\""
+   }
+  },
+  {
+   "title": "INSERT rejected by UNIQUE constraint (attendance already recorded)",
+   "sql": "INSERT INTO attendance (emp_id, att_date, status)\nVALUES (6, '2026-09-01', 'Present');",
+   "note": "UNIQUE (emp_id, att_date) allows one row per employee per day.",
+   "result": {
+    "ok": false,
+    "error": "duplicate key value violates unique constraint \"uq_att_emp_day\""
+   }
+  },
+  {
+   "title": "INSERT rejected by FOREIGN KEY (department does not exist)",
+   "sql": "INSERT INTO employee (first_name, last_name, email, phone, gender, dob, date_of_joining,\n                      pan_no, bank_account_no, ifsc_code, dept_id, desig_id)\nVALUES ('Test', 'User', 'test.user@allcaps.example', '9840012399', 'M', '1999-01-01',\n        '2026-10-01', 'AVTPU1299G', '501000999999', 'HDFC0001201', 99, 2);",
+   "note": "dept_id 99 is not in DEPARTMENT.",
+   "result": {
+    "ok": false,
+    "error": "insert or update on table \"employee\" violates foreign key constraint \"employee_dept_id_fkey\""
+   }
+  },
+  {
+   "title": "UPDATE: annual salary revision of a designation",
+   "sql": "UPDATE designation\n   SET basic_salary = basic_salary * 1.10\n WHERE title = 'Software Engineer'\nRETURNING desig_id, title, basic_salary;",
+   "note": "Future payroll runs use the new basic; paid payslips keep their stored snapshot.",
+   "result": {
+    "ok": true,
+    "cols": [
+     "desig_id",
+     "title",
+     "basic_salary"
+    ],
+    "rows": [
+     [
+      "2",
+      "Software Engineer",
+      "49500.00"
+     ]
+    ],
+    "affected": 1
+   }
+  },
+  {
+   "title": "UPDATE: deactivate a salary component",
+   "sql": "UPDATE salary_component\n   SET is_active = FALSE\n WHERE component_name = 'Internet Allowance'\nRETURNING component_id, component_name, is_active;",
+   "note": "Inactive components are skipped by generate_monthly_payroll.",
+   "result": {
+    "ok": true,
+    "cols": [
+     "component_id",
+     "component_name",
+     "is_active"
+    ],
+    "rows": [
+     [
+      "6",
+      "Internet Allowance",
+      "false"
+     ]
+    ],
+    "affected": 1
+   }
+  },
+  {
+   "title": "DELETE: employee cancels a pending leave request",
+   "sql": "DELETE FROM leave_request\n WHERE leave_id = 13 AND status = 'Pending'\nRETURNING leave_id, emp_id, leave_type, status;",
+   "note": null,
+   "result": {
+    "ok": true,
+    "cols": [
+     "leave_id",
+     "emp_id",
+     "leave_type",
+     "status"
+    ],
+    "rows": [
+     [
+      "13",
+      "6",
+      "Earned",
+      "Pending"
+     ]
+    ],
+    "affected": 1
+   }
+  },
+  {
+   "title": "DELETE: remove the employee added above (no payroll yet)",
+   "sql": "DELETE FROM employee\n WHERE email = 'kylian.mbappe@allcaps.example'\nRETURNING emp_id, first_name, last_name;",
+   "note": null,
+   "result": {
+    "ok": true,
+    "cols": [
+     "emp_id",
+     "first_name",
+     "last_name"
+    ],
+    "rows": [
+     [
+      "21",
+      "Kylian",
+      "Mbappe"
+     ]
+    ],
+    "affected": 1
+   }
+  },
+  {
+   "title": "DELETE rejected by FOREIGN KEY (employee has payroll history)",
+   "sql": "DELETE FROM employee WHERE emp_id = 7;",
+   "note": "payroll.emp_id references employee with ON DELETE RESTRICT (default NO ACTION), so salary history cannot be lost.",
+   "result": {
+    "ok": false,
+    "error": "update or delete on table \"employee\" violates foreign key constraint \"payroll_emp_id_fkey\" on table \"payroll\""
+   }
+  }
+ ],
+ "tx": {
+  "apply": {
+   "ok": true,
+   "cols": [
+    "leave_id",
+    "emp_id",
+    "leave_type",
+    "start_date",
+    "end_date",
+    "status"
+   ],
+   "rows": [
+    [
+     "14",
+     "7",
+     "Unpaid",
+     "2026-10-21",
+     "2026-10-22",
+     "Pending"
+    ]
+   ],
+   "affected": 1
+  },
+  "att_before": {
+   "cols": [
+    "att_date",
+    "status"
+   ],
+   "rows": [],
+   "affected": 0
+  },
+  "approve": {
+   "ok": true,
+   "cols": [],
+   "rows": [],
+   "affected": 0
+  },
+  "att_after": {
+   "cols": [
+    "att_date",
+    "status"
+   ],
+   "rows": [
+    [
+     "2026-10-15",
+     "Leave"
+    ],
+    [
+     "2026-10-16",
+     "Leave"
+    ]
+   ],
+   "affected": 0
+  },
+  "leave_after": {
+   "cols": [
+    "leave_id",
+    "emp_id",
+    "leave_type",
+    "status",
+    "approved_by"
+   ],
+   "rows": [
+    [
+     "10",
+     "20",
+     "Sick",
+     "Approved",
+     "4"
+    ]
+   ],
+   "affected": 0
+  },
+  "approve_wrong_mgr": {
+   "ok": false,
+   "error": "Employee 5 is not the manager of employee 7"
+  },
+  "approve_self": {
+   "ok": false,
+   "error": "An employee cannot approve their own leave"
+  },
+  "approve_twice": {
+   "ok": false,
+   "error": "Leave request 10 is already Approved"
+  },
+  "approve_new": {
+   "ok": true,
+   "cols": [],
+   "rows": [],
+   "affected": 0
+  },
+  "big_leave": {
+   "ok": true,
+   "cols": [
+    "leave_id"
+   ],
+   "rows": [
+    [
+     "15"
+    ]
+   ],
+   "affected": 1
+  },
+  "balance_fail": {
+   "ok": false,
+   "error": "Insufficient leave balance: requested 20, available 13"
+  },
+  "gen_count_before": {
+   "cols": [
+    "october_payslips"
+   ],
+   "rows": [
+    [
+     "0"
+    ]
+   ],
+   "affected": 0
+  },
+  "generate": {
+   "ok": true,
+   "cols": [
+    "p_generated"
+   ],
+   "rows": [
+    [
+     "19"
+    ]
+   ],
+   "affected": 0
+  },
+  "generate_again": {
+   "ok": true,
+   "cols": [
+    "p_generated"
+   ],
+   "rows": [
+    [
+     "0"
+    ]
+   ],
+   "affected": 0
+  },
+  "gen_rows": {
+   "cols": [
+    "emp_id",
+    "employee",
+    "working_days",
+    "lop_days",
+    "basic_salary",
+    "gross_salary",
+    "total_deductions",
+    "net_salary",
+    "status"
+   ],
+   "rows": [
+    [
+     "1",
+     "Sachin Tendulkar",
+     "22",
+     "0.5",
+     "150000.00",
+     "240327.27",
+     "25620.46",
+     "214706.81",
+     "Generated"
+    ],
+    [
+     "6",
+     "LeBron James",
+     "22",
+     "0.0",
+     "65000.00",
+     "108150.00",
+     "11750.00",
+     "96400.00",
+     "Generated"
+    ],
+    [
+     "7",
+     "Cristiano Ronaldo",
+     "22",
+     "2.5",
+     "49500.00",
+     "73927.50",
+     "8158.75",
+     "65768.75",
+     "Generated"
+    ],
+    [
+     "13",
+     "Virat Kohli",
+     "22",
+     "0.5",
+     "30000.00",
+     "50345.45",
+     "5684.09",
+     "44661.36",
+     "Generated"
+    ],
+    [
+     "20",
+     "Coco Gauff",
+     "22",
+     "0.0",
+     "49500.00",
+     "83040.00",
+     "9115.00",
+     "73925.00",
+     "Generated"
+    ]
+   ],
+   "affected": 0
+  },
+  "gen_detail_count": {
+   "cols": [
+    "october_line_items"
+   ],
+   "rows": [
+    [
+     "171"
+    ]
+   ],
+   "affected": 0
+  },
+  "pay": {
+   "ok": true,
+   "cols": [
+    "p_paid"
+   ],
+   "rows": [
+    [
+     "19"
+    ]
+   ],
+   "affected": 0
+  },
+  "pay_rows": {
+   "cols": [
+    "emp_id",
+    "status",
+    "payment_date",
+    "payment_mode",
+    "transaction_ref"
+   ],
+   "rows": [
+    [
+     "1",
+     "Paid",
+     "2026-10-31",
+     "NEFT",
+     "TXN2026100001"
+    ],
+    [
+     "6",
+     "Paid",
+     "2026-10-31",
+     "NEFT",
+     "TXN2026100006"
+    ],
+    [
+     "7",
+     "Paid",
+     "2026-10-31",
+     "NEFT",
+     "TXN2026100007"
+    ]
+   ],
+   "affected": 0
+  },
+  "lock_update": {
+   "ok": false,
+   "error": "Payroll 45 (employee 6, 10/2026) is already Paid and cannot be modified"
+  },
+  "lock_delete": {
+   "ok": false,
+   "error": "Payroll 45 (employee 6, 10/2026) is already Paid and cannot be deleted"
+  },
+  "mgr_bad": {
+   "ok": false,
+   "error": "Manager 19 is not an active employee"
+  },
+  "mgr_cycle": {
+   "ok": false,
+   "error": "Circular reporting: employee 6 already reports to 4"
+  },
+  "exit_before": {
+   "cols": [
+    "emp_id",
+    "employee",
+    "reports_to"
+   ],
+   "rows": [
+    [
+     "12",
+     "PV Sindhu",
+     "5"
+    ],
+    [
+     "13",
+     "Virat Kohli",
+     "5"
+    ],
+    [
+     "14",
+     "Naomi Osaka",
+     "5"
+    ]
+   ],
+   "affected": 0
+  },
+  "exit_head_before": {
+   "cols": [
+    "dept_name",
+    "head_emp_id"
+   ],
+   "rows": [
+    [
+     "Sales",
+     "5"
+    ]
+   ],
+   "affected": 0
+  },
+  "exit": {
+   "ok": true,
+   "cols": [],
+   "rows": [],
+   "affected": 1
+  },
+  "exit_after": {
+   "cols": [
+    "emp_id",
+    "employee",
+    "reports_to"
+   ],
+   "rows": [
+    [
+     "12",
+     "PV Sindhu",
+     "1"
+    ],
+    [
+     "13",
+     "Virat Kohli",
+     "1"
+    ],
+    [
+     "14",
+     "Naomi Osaka",
+     "1"
+    ]
+   ],
+   "affected": 0
+  },
+  "exit_head_after": {
+   "cols": [
+    "dept_name",
+    "head_emp_id"
+   ],
+   "rows": [
+    [
+     "Sales",
+     "NULL"
+    ]
+   ],
+   "affected": 0
+  }
+ }
+}

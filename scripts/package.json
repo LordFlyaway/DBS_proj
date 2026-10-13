@@ -1,0 +1,16 @@
+{
+  "name": "payroll-scripts",
+  "scripts": {
+    "test:local": "node test_local.mjs",
+    "gen:queries": "node gen_queries.mjs",
+    "setup:db": "node setup_db.mjs",
+    "setup:users": "node setup_db.mjs --users"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.9",
+    "dotenv": "^18.0.7",
+    "pg": "^8.23.1"
+  },
+  "private": true,
+  "type": "module"
+}

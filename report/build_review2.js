@@ -14,9 +14,11 @@ const DATA = JSON.parse(fs.readFileSync(path.join(__dirname, "review2_data.json"
 const SQL = (f) => fs.readFileSync(path.join(ROOT, "sql", f), "utf8").replace(/\r/g, "");
 const FONT = "Calibri";
 const MONO = "Consolas";
-const NAVY = "1F3B5C";
-const GREEN = "16443A";
+const NAVY = "000000";
+const GREEN = "000000";
 const CONTENT_W = 9026; // A4 portrait, 1" margins (DXA)
+const FINAL = process.env.REVIEW === "3"; // Review III final report adds integration sections
+const LIVE_URL = process.env.LIVE_URL || "";
 
 const TEAM = [
   ["Krishiv Rajkumar", "24BDE0132"],
@@ -37,20 +39,19 @@ const bullet = (children) =>
   new Paragraph({ numbering: { reference: "bullets", level: 0 }, spacing: { after: 60, line: 280 }, children: typeof children === "string" ? [t(children)] : children });
 const pageBreak = () => new Paragraph({ children: [new PageBreak()] });
 const caption = (s) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 80, after: 220 },
-  children: [t(s, { italics: true, size: 19, color: "555555" })] });
+  children: [t(s, { italics: true, size: 19, color: "000000" })] });
 const gap = () => new Paragraph({ spacing: { after: 60 }, children: [] });
 
-const line = { style: BorderStyle.SINGLE, size: 4, color: "9AA9BC" };
+const line = { style: BorderStyle.SINGLE, size: 6, color: "000000" };
 const borders = { top: line, bottom: line, left: line, right: line };
 
 function table(headers, rows, widths, { size = 19, headerFill = NAVY } = {}) {
   const total = widths.reduce((a, c) => a + c, 0);
   const mk = (content, w, header) => new TableCell({
     borders, width: { size: w, type: WidthType.DXA },
-    shading: header ? { fill: headerFill, type: ShadingType.CLEAR, color: "auto" } : undefined,
     margins: { top: 50, bottom: 50, left: 90, right: 90 },
     children: [new Paragraph({ children: Array.isArray(content) ? content
-      : [t(String(content), { bold: header, color: header ? "FFFFFF" : undefined, size })] })],
+      : [t(String(content), { bold: header, size })] })],
   });
   return new Table({
     width: { size: total, type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: widths,
@@ -82,7 +83,7 @@ function resultTable(cols, rows, { size = 16 } = {}) {
     widths = L.mins.map((m, i) => m + Math.floor((over[i] / overSum) * spare));
   }
   widths[widths.length - 1] += CONTENT_W - widths.reduce((a, c) => a + c, 0);
-  return table(cols, rows, widths, { size, headerFill: "2F8F6B" });
+  return table(cols, rows, widths, { size });
 }
 
 /** Grey code box (one-cell table) with one paragraph per line. */
@@ -92,9 +93,8 @@ function codeBlock(src, { size = 16 } = {}) {
     width: { size: CONTENT_W, type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [CONTENT_W],
     rows: [new TableRow({ children: [new TableCell({
       width: { size: CONTENT_W, type: WidthType.DXA },
-      shading: { fill: "F2F5F3", type: ShadingType.CLEAR, color: "auto" },
-      borders: { top: { style: BorderStyle.SINGLE, size: 4, color: "C9D6D0" }, bottom: { style: BorderStyle.SINGLE, size: 4, color: "C9D6D0" },
-                 left: { style: BorderStyle.SINGLE, size: 4, color: "C9D6D0" }, right: { style: BorderStyle.SINGLE, size: 4, color: "C9D6D0" } },
+      borders: { top: { style: BorderStyle.SINGLE, size: 4, color: "000000" }, bottom: { style: BorderStyle.SINGLE, size: 4, color: "000000" },
+                 left: { style: BorderStyle.SINGLE, size: 4, color: "000000" }, right: { style: BorderStyle.SINGLE, size: 4, color: "000000" } },
       margins: { top: 80, bottom: 80, left: 140, right: 100 },
       children: lines.map((l) => new Paragraph({ spacing: { after: 0, line: 240 },
         children: [new TextRun({ text: l.length ? l : " ", font: MONO, size })] })),
@@ -105,17 +105,15 @@ function codeBlock(src, { size = 16 } = {}) {
 function errorBox(msg) {
   return new Paragraph({
     spacing: { before: 60, after: 160 },
-    shading: { fill: "F9E6E3", type: ShadingType.CLEAR, color: "auto" },
-    border: { left: { style: BorderStyle.SINGLE, size: 18, color: "B5473A", space: 6 } },
-    children: [t("ERROR:  ", { bold: true, color: "B5473A", size: 19 }), t(msg, { color: "7A2E25", size: 19, font: MONO })],
+    border: { left: { style: BorderStyle.SINGLE, size: 18, color: "000000", space: 6 } },
+    children: [t("ERROR:  ", { bold: true, color: "000000", size: 19 }), t(msg, { color: "000000", size: 19, font: MONO })],
   });
 }
 function okBox(msg) {
   return new Paragraph({
     spacing: { before: 60, after: 160 },
-    shading: { fill: "E3F1EA", type: ShadingType.CLEAR, color: "auto" },
-    border: { left: { style: BorderStyle.SINGLE, size: 18, color: "2F8F6B", space: 6 } },
-    children: [t("RESULT:  ", { bold: true, color: "1F6B4F", size: 19 }), t(msg, { color: "1F4D3C", size: 19 })],
+    border: { left: { style: BorderStyle.SINGLE, size: 18, color: "000000", space: 6 } },
+    children: [t("RESULT:  ", { bold: true, color: "000000", size: 19 }), t(msg, { color: "000000", size: 19 })],
   });
 }
 
@@ -125,9 +123,16 @@ function image(file, w, h) {
 }
 const shot = (name, cap) => [image(path.join(__dirname, "shots", `${name}.png`), 600, 375), caption(cap)];
 
-/** Splits a SQL file into its "-- -----" separated blocks. */
+/** Splits a SQL file into sections: [file header, section 1, section 2, ...].
+ *  Each section is "-- ----" / comment lines / "-- ----" / code, so separators come
+ *  in pairs and a section runs from one even-numbered separator to the next. */
 function blocks(file) {
-  return SQL(file).split(/\n(?=-- -{20,})/).map((s) => s.trim()).filter(Boolean);
+  const lines = SQL(file).split("\n");
+  const seps = lines.map((l, i) => (/^-- -{20,}\s*$/.test(l) ? i : -1)).filter((i) => i >= 0);
+  const starts = seps.filter((_, k) => k % 2 === 0);
+  const out = [lines.slice(0, starts[0]).join("\n").trim()];
+  starts.forEach((st, k) => out.push(lines.slice(st, k + 1 < starts.length ? starts[k + 1] : lines.length).join("\n").trim()));
+  return out;
 }
 const outOf = (r) => (r.ok === false ? errorBox(r.error)
   : !r.cols?.length ? okBox("Statement completed successfully (no rows returned).")
@@ -147,16 +152,16 @@ const titlePage = [
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 160 },
     children: [t("EMPLOYEE PAYROLL MANAGEMENT SYSTEM", { bold: true, size: 44, color: GREEN })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 900 },
-    children: [t("Review II – Database Implementation", { size: 28, color: "444444" })] }),
+    children: [t(FINAL ? "Review III – Integrated System & Final Demonstration" : "Review II – Database Implementation", { size: 28, color: "000000" })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 120 }, children: [b("Submitted by")] }),
   ...TEAM.map(([n, r]) => new Paragraph({ alignment: AlignmentType.CENTER, children: [t(`${n}  –  ${r}`, { size: 24 })] })),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 400 }, children: [b("Under the guidance of")] }),
-  new Paragraph({ alignment: AlignmentType.CENTER, children: [t("<Faculty Name>", { shading: { type: ShadingType.CLEAR, fill: "FFF176", color: "auto" } })] }),
+  new Paragraph({ alignment: AlignmentType.CENTER, children: [t("Dr Rubimalaya R", { size: 24 })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 400 }, children: [t("October 2026")] }),
   pageBreak(),
   new Paragraph({ heading: HeadingLevel.HEADING_1, children: [t("Contents")] }),
   new TableOfContents("Contents", { hyperlink: true, headingStyleRange: "1-2" }),
-  p([t("(If page numbers are missing, right-click the table and choose “Update Field”.)", { italics: true, size: 18, color: "777777" })]),
+  p([t("(If page numbers are missing, right-click the table and choose “Update Field”.)", { italics: true, size: 18, color: "000000" })]),
   pageBreak(),
 ];
 
@@ -167,9 +172,10 @@ const sec1 = [
     ["Project title", "Employee Payroll Management System"],
     ["Course", "BCSE302L – Database Systems (Lab course project)"],
     ["Team", TEAM.map(([n, r]) => `${n} (${r})`).join(", ")],
-    ["Guide", "<Faculty Name>"],
+    ["Guide", "Dr Rubimalaya R"],
     ["Database", "PostgreSQL 17 hosted on Supabase (cloud); PL/pgSQL for procedures, functions, cursors and triggers"],
-    ["Application", "React + Vite web app (deployed on Vercel) connected through the supabase-js client"],
+    ["Application", "React + Vite web application connected to the database through the supabase-js client"],
+    ...(LIVE_URL ? [["Live application", LIVE_URL]] : []),
     ["Source code", "github.com/LordFlyaway/DBS_proj"],
     ["Sample company", "All Caps Pvt. Ltd. – a fictional company whose 20 employees are named after musicians and athletes"],
   ], [2200, CONTENT_W - 2200]),
@@ -306,7 +312,7 @@ const sec6 = [
     h3(`${i + 1}. ${d.title}`),
     codeBlock(d.sql),
     d.result.ok ? (d.result.rows.length ? resultTable(d.result.cols, d.result.rows) : okBox(`${d.result.affected ?? 0} row(s) affected`)) : errorBox(d.result.error),
-    ...(d.note ? [p([t(d.note, { italics: true, color: "555555" })])] : []),
+    ...(d.note ? [p([t(d.note, { italics: true, color: "000000" })])] : []),
   ]),
   pageBreak(),
 ];
@@ -320,7 +326,7 @@ const sec7 = [
     h2(`Q${q.id}. ${q.title}`),
     p([b("Concepts: "), t(q.concepts.join(", "))]),
     codeBlock(q.sql + ";"),
-    p([t(`Output – ${q.total} row(s)${q.total > q.rows.length ? `, first ${q.rows.length} shown` : ""}:`, { italics: true, color: "555555", size: 19 })], { spacing: { before: 100, after: 60 } }),
+    p([t(`Output – ${q.total} row(s)${q.total > q.rows.length ? `, first ${q.rows.length} shown` : ""}:`, { italics: true, color: "000000", size: 19 })], { spacing: { before: 100, after: 60 } }),
     resultTable(q.cols, q.rows),
     gap(),
   ]),
@@ -361,7 +367,7 @@ const sec8 = [
   p("Execution – October 2026, then the same call again:"),
   outOf(tx.generate), outOf(tx.generate_again),
   outOf(tx.gen_rows),
-  p([t("Cristiano Ronaldo has 2.5 LOP days: 0.5 from a half day plus 2 days of approved unpaid leave on 21–22 October (see 8.4). October was generated after the 10 % Software Engineer revision and the Internet Allowance deactivation from section 6.4, so Cristiano and Coco Gauff are paid the new basic of ₹49,500 and nobody receives the Internet Allowance.", { italics: true, color: "555555" })]),
+  p([t("Cristiano Ronaldo has 2.5 LOP days: 0.5 from a half day plus 2 days of approved unpaid leave on 21–22 October (see 8.4). October was generated after the 10 % Software Engineer revision and the Internet Allowance deactivation from section 6.4, so Cristiano and Coco Gauff are paid the new basic of ₹49,500 and nobody receives the Internet Allowance.", { italics: true, color: "000000" })]),
   h3("Procedure 2 – process_leave"), codeBlock(F[6]),
   h3("Procedure 3 – pay_monthly_payroll (cursor FOR UPDATE … WHERE CURRENT OF)"), codeBlock(F[7]),
   p([b("How the cursor is used: "), code("cur_pay"), t(" selects the month’s unpaid payroll rows FOR UPDATE, which locks them so two payroll officers cannot pay the same salaries at the same time. Each fetched row is updated through "), code("WHERE CURRENT OF cur_pay"), t(", the positioned update that changes exactly the row the cursor is on.")]),
@@ -411,6 +417,109 @@ CREATE POLICY pay_read ON payroll FOR SELECT TO authenticated
   pageBreak(),
 ];
 
+// ------------------------------------------------------------------ Review III additions
+/** 9.2 – how the components chain together over one monthly payroll cycle. */
+function integratedWorkflow() {
+  const Y = "✓";
+  return [
+    h2("9.2 Integrated Workflow – One Monthly Payroll Cycle"),
+    p("The database components are not independent programs: the output of one operation is the input of the next. Attendance and leave recorded during the month feed fn_lop_days, which feeds the payroll procedure; approving leave writes attendance through a trigger; paying salaries locks the payroll through another trigger; and the reports read what the procedures produced. The table follows one month from start to finish."),
+    table(["Step", "Actor", "User operation", "SQL / PL/pgSQL executed", "Tables written"], [
+      ["1", "Admin", "Onboards a new employee", "INSERT employee – CHECK, UNIQUE and FK constraints; trg_validate_manager", "employee"],
+      ["2", "Employee", "Checks in and out every day", "INSERT / UPDATE attendance (RLS: own row, today)", "attendance"],
+      ["3", "Employee", "Applies for leave", "fn_leave_balance; INSERT leave_request (status Pending)", "leave_request"],
+      ["4", "Manager", "Approves the leave", "process_leave → fn_leave_balance → trg_leave_approved", "leave_request, attendance"],
+      ["5", "Payroll", "Generates the month’s payroll", "generate_monthly_payroll – cursor cur_emp; fn_working_days, fn_lop_days, fn_component_amount", "payroll, payroll_detail"],
+      ["6", "Payroll", "Pays salaries", "pay_monthly_payroll – cursor cur_pay FOR UPDATE … WHERE CURRENT OF", "payroll"],
+      ["7", "Payroll", "Tries to change a paid payslip", "UPDATE / DELETE payroll → trg_lock_paid_payroll rejects it", "– (rolled back)"],
+      ["8", "Employee", "Opens their payslip", "SELECT payroll ⋈ payroll_detail ⋈ salary_component (RLS: own rows)", "– (read)"],
+      ["9", "Admin / Payroll", "Reviews reports", "Views q04, q06, q08, q13 and the other query views", "– (read)"],
+      ["10", "Admin", "Records a resignation", "UPDATE employee status → trg_employee_exit → trg_validate_manager", "employee, department, leave_request"],
+    ], [600, 1100, 2000, 3626, 1700], { size: 17 }),
+    p([b("Data flow: "), t("attendance (step 2) and approved unpaid leave (step 4) → fn_lop_days → loss of pay in the payroll (step 5) → payslip and reports (steps 8–9). Approved leave reaches attendance only through trg_leave_approved, so the payroll always sees the approved leave without the application having to update two tables.")], { spacing: { before: 140, after: 140 } }),
+    h3("Which database component runs in which transaction"),
+    table(["Component", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", "T9"], [
+      ["fn_working_days", "", "", "", Y, "", "", "", "", ""],
+      ["fn_component_amount", "", "", "", Y, "", "", "", "", ""],
+      ["fn_lop_days", "", "", "", Y, "", "", "", "", ""],
+      ["fn_leave_balance", "", Y, Y, "", "", "", "", "", Y],
+      ["generate_monthly_payroll + cursor cur_emp", "", "", "", Y, "", "", "", "", ""],
+      ["process_leave", "", "", Y, "", "", "", "", "", ""],
+      ["pay_monthly_payroll + cursor cur_pay", "", "", "", "", "", Y, "", "", ""],
+      ["trg_leave_approved", "", "", Y, "", "", "", "", "", ""],
+      ["trg_lock_paid_payroll", "", "", "", "", "", Y, Y, "", ""],
+      ["trg_validate_manager", "", "", "", "", "", "", "", Y, ""],
+      ["trg_employee_exit", "", "", "", "", "", "", "", Y, ""],
+      ["Constraints (PK/FK/UNIQUE/CHECK)", Y, Y, Y, Y, "", Y, "", Y, ""],
+      ["Row Level Security", Y, Y, Y, Y, Y, Y, Y, Y, Y],
+      ["Query views (Q1–Q19)", "", "", "", "", "", "", "", "", Y],
+    ], [3026, ...Array(9).fill(667)], { size: 17 }),
+    p([t("T1 check-in · T2 apply leave · T3 approve leave · T4 generate payroll · T5 payslip · T6 pay salaries · T7 delete paid payroll · T8 resignation · T9 report queries. In T6 the lock trigger runs while the rows are updated from Generated to Paid and lets the change through.", { italics: true, size: 19 })]),
+    h2("9.3 Transactions"),
+  ];
+}
+
+/** 9.4 reports + 9.5 validation tests (Output & Reports criterion). */
+function reportsAndValidation() {
+  const q = (id) => DATA.queries.find((x) => x.id === id);
+  const dml = DATA.dml;
+  return [
+    h2("9.4 Reports Generated from the Database"),
+    p("The application turns the stored data into the reports a payroll team needs. Each report below is produced by the database (a view or a procedure) and shown in the application; the figures are actual outputs on the sample data."),
+    table(["Report", "Produced by", "Where it appears"], [
+      ["Itemised payslip", "PAYROLL + PAYROLL_DETAIL + SALARY_COMPONENT (written by generate_monthly_payroll)", "Payroll Run and My Payslips pages (Figure 9)"],
+      ["Monthly payroll totals and payment status", "View q13_monthly_payroll_totals", "Admin / Payroll dashboard (Figure 13)"],
+      ["Department-wise salary cost", "View q04_department_salary_cost", "Dashboard bar chart, SQL Queries page (Figure 12)"],
+      ["Attendance summary", "View q06_attendance_summary", "SQL Queries page"],
+      ["Leave balance of every employee", "View q08_leave_balance → fn_leave_balance", "SQL Queries page; each employee’s Leave page"],
+      ["Loss-of-pay report", "View q07_loss_of_pay", "SQL Queries page"],
+    ], [2600, 3600, CONTENT_W - 6200], { size: 18 }),
+    h3("Monthly payroll totals (q13)"), resultTable(q(13).cols, q(13).rows),
+    h3("Department-wise salary cost, September 2026 (q04)"), resultTable(q(4).cols, q(4).rows),
+    h3("Attendance summary, September 2026 (q06, first 10 employees)"), resultTable(q(6).cols, q(6).rows),
+    h3("Leave balance 2026 (q08, first 10 employees)"), resultTable(q(8).cols, q(8).rows),
+    h2("9.5 Validation – Invalid Operations Rejected by the Database"),
+    p("Every business rule was tested by deliberately attempting an invalid operation. In each case the database itself refused the change, so the rule holds no matter which client sends the request."),
+    table(["#", "Attempted operation", "Rule / component", "Database response", "Result"], [
+      ["1", "Insert employee with PAN 'BADPAN'", "CHECK constraint", dml[1].result.error, "Pass"],
+      ["2", "Second attendance row for the same day", "UNIQUE (emp_id, att_date)", dml[2].result.error, "Pass"],
+      ["3", "Employee in a non-existent department", "FOREIGN KEY", dml[3].result.error, "Pass"],
+      ["4", "Delete an employee who has payroll history", "FK ON DELETE RESTRICT", dml[8].result.error, "Pass"],
+      ["5", "Manager approves leave of someone outside their team", "process_leave", tx.approve_wrong_mgr.error, "Pass"],
+      ["6", "Employee approves their own leave", "process_leave", tx.approve_self.error, "Pass"],
+      ["7", "Approve the same request twice", "process_leave", tx.approve_twice.error, "Pass"],
+      ["8", "Approve 20 days of paid leave with 13 left", "process_leave + fn_leave_balance", tx.balance_fail.error, "Pass"],
+      ["9", "Generate October payroll a second time", "generate_monthly_payroll (skip logic)", `${tx.generate_again.rows?.[0]?.[0]} new payslips created`, "Pass"],
+      ["10", "Change net salary of a paid payslip", "trg_lock_paid_payroll", tx.lock_update.error, "Pass"],
+      ["11", "Delete a paid payslip", "trg_lock_paid_payroll", tx.lock_delete.error, "Pass"],
+      ["12", "Assign a resigned employee as manager", "trg_validate_manager", tx.mgr_bad.error, "Pass"],
+      ["13", "Create a two-person reporting cycle", "trg_validate_manager", tx.mgr_cycle.error, "Pass"],
+      ["14", "Employee calls the payroll generation API", "api_generate_payroll role check", "Only Admin or Payroll staff can generate payroll", "Pass"],
+      ["15", "Read employee data without signing in", "Privileges + Row Level Security", "permission denied for table employee", "Pass"],
+    ], [450, 2300, 1800, CONTENT_W - 5250, 700], { size: 16 }),
+  ];
+}
+
+/** 10.1 – design choices and why (Viva criterion). */
+function designDecisions() {
+  return [
+    h2("10.1 Design Decisions and Justification"),
+    table(["Decision", "Justification"], [
+      ["PostgreSQL (Supabase) with PL/pgSQL", "A hosted database the web application can reach from anywhere; PL/pgSQL offers the same procedures, functions, cursors and triggers as Oracle PL/SQL."],
+      ["Surrogate SERIAL keys, natural keys kept UNIQUE", "Short, stable keys for joins and foreign keys, while e-mail, phone, PAN and bank account still cannot be duplicated."],
+      ["Gross and net salary stored in PAYROLL", "A deliberate snapshot: a payslip must not change when salary rules change later. Derived values that never become history (age, hours worked, leave days) are computed instead."],
+      ["PAYROLL_DETAIL bridge table", "Resolves the M:N relationship between payroll and salary components and keeps an auditable, itemised payslip."],
+      ["Business rules inside the database", "Constraints and triggers apply to every client – the web app, the SQL editor or the API – so a rule cannot be skipped by a missing UI check."],
+      ["Explicit cursor in generate_monthly_payroll", "Each employee needs several dependent steps (LOP, earned basic, every component, one header and many detail rows), with already-processed employees skipped; a cursor processes them one at a time in a defined order."],
+      ["Cursor FOR UPDATE in pay_monthly_payroll", "Locks the month’s unpaid rows so two payroll officers cannot pay the same salary twice; WHERE CURRENT OF updates exactly the fetched row."],
+      ["FK actions: RESTRICT / CASCADE / SET NULL", "Payroll history can never be deleted with an employee (RESTRICT); attendance and leave have no meaning without the employee (CASCADE); a departing manager or approver leaves the records intact (SET NULL)."],
+      ["Triggers for side effects", "Writing leave into attendance and cleaning up after a resignation happen in the same transaction as the change that causes them, so they cannot be forgotten or half-done."],
+      ["Row Level Security + api_* wrapper functions", "Each role sees only permitted rows; PostgREST cannot call procedures, so SECURITY DEFINER functions check the caller’s role and then CALL the procedure."],
+      ["Views with security_invoker", "Report queries are written once, reused by the dashboard and the SQL Queries page, and still respect each user’s row permissions."],
+    ], [3000, CONTENT_W - 3000], { size: 18 }),
+  ];
+}
+
 // ------------------------------------------------------------------ 9. transactions
 const sec9 = [
   h1("9. Real-World Transaction Demonstrations"),
@@ -427,6 +536,7 @@ const sec9 = [
     ["Manager (Aubrey Graham)", "8 (self, manager, team)", "2 (own)", "6 (own + team)", "321", "blocked"],
     ["Employee (LeBron James)", "2 (self + manager)", "2 (own)", "2 (own)", "50 (own)", "blocked"],
   ], [2400, 1500, 1100, 1400, 1100, CONTENT_W - 7500], { size: 18 }),
+  ...(FINAL ? integratedWorkflow() : []),
 
   h2("T1. Employee checks in"),
   txTable([
@@ -518,12 +628,15 @@ const sec9 = [
   ]),
   ...shot("11_queries", "Figure 12 – The SQL Queries page running Q4 live against the database."),
   ...shot("10_admin_dashboard", "Figure 13 – Admin dashboard built from views q13 and q04 and live counts."),
+  ...(FINAL ? reportsAndValidation() : []),
   pageBreak(),
 ];
 
 // ------------------------------------------------------------------ 10. conclusion
 const sec10 = [
   h1("10. Conclusion"),
+  ...(FINAL ? designDecisions() : []),
+  ...(FINAL ? [h2("10.2 Conclusion and Future Work")] : []),
   p("The Employee Payroll Management System has been implemented as a PostgreSQL database on Supabase with a role-based web application. The database has 8 normalised tables with complete primary key, foreign key, NOT NULL, UNIQUE, CHECK and DEFAULT constraints, populated with realistic data for a 20-employee company over three months."),
   p("Nineteen SQL queries cover joins, self-joins, aggregation, grouping with HAVING, correlated and scalar subqueries, set operations, window functions and date functions. Four functions, three procedures (two using explicit cursors) and four triggers implement the real business operations – loss-of-pay calculation, leave approval, payroll generation, salary payment and employee exit – and the database itself rejects invalid operations such as editing a paid payslip, approving one’s own leave or exceeding the leave balance."),
   p("Every component has a clear purpose in the application: each user action in the web app maps to a specific SQL statement, procedure or trigger, and the DB activity panel shows that flow live during the demonstration. Possible extensions are tax-regime based TDS calculation, salary revisions with effective dates, and an audit log table populated by triggers."),
@@ -533,18 +646,18 @@ const sec10 = [
 const portrait = { page: { size: { width: 11906, height: 16838 }, margin: { top: 1300, bottom: 1300, left: 1440, right: 1440 } } };
 const landscape = { page: { size: { width: 11906, height: 16838, orientation: PageOrientation.LANDSCAPE }, margin: { top: 900, bottom: 900, left: 1000, right: 1000 } } };
 const footer = { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER,
-  children: [new TextRun({ children: ["Page ", PageNumber.CURRENT], size: 18, color: "777777" })] })] }) };
+  children: [new TextRun({ children: ["Page ", PageNumber.CURRENT], size: 18, color: "000000" })] })] }) };
 
 const doc = new Document({
   creator: TEAM.map((x) => x[0]).join(", "),
-  title: "Employee Payroll Management System – Review II",
+  title: FINAL ? "Employee Payroll Management System – Final Report (Review III)" : "Employee Payroll Management System – Review II",
   styles: {
     default: { document: { run: { font: FONT, size: 22 } } },
     paragraphStyles: [
       { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true,
         run: { size: 32, bold: true, color: GREEN, font: FONT }, paragraph: { spacing: { before: 240, after: 160 }, outlineLevel: 0, keepNext: true } },
       { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true,
-        run: { size: 26, bold: true, color: "2F8F6B", font: FONT }, paragraph: { spacing: { before: 260, after: 120 }, outlineLevel: 1, keepNext: true } },
+        run: { size: 26, bold: true, color: "000000", font: FONT }, paragraph: { spacing: { before: 260, after: 120 }, outlineLevel: 1, keepNext: true } },
       { id: "Heading3", name: "Heading 3", basedOn: "Normal", next: "Normal", quickFormat: true,
         run: { size: 22, bold: true, color: NAVY, font: FONT }, paragraph: { spacing: { before: 200, after: 80 }, outlineLevel: 2, keepNext: true } },
     ],
@@ -562,7 +675,7 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then((buf) => {
-  const out = path.join(__dirname, "Payroll_DBMS_Review2_Report.docx");
+  const out = path.join(__dirname, process.env.OUT_NAME || (FINAL ? "Payroll_DBMS_Final_Report_Review3.docx" : "Payroll_DBMS_Review2_Report.docx"));
   fs.writeFileSync(out, buf);
   console.log("wrote", out);
 });

@@ -121,7 +121,11 @@ function image(file, w, h) {
   return new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 80 },
     children: [new ImageRun({ type: "png", data: fs.readFileSync(file), transformation: { width: w, height: h } })] });
 }
-const shot = (name, cap) => [image(path.join(__dirname, "shots", `${name}.png`), 600, 375), caption(cap)];
+// The short final report keeps only the key screenshots; figures are renumbered in order.
+const KEEP_SHOTS = ["05_manager_approved", "06_payroll_generate", "07_payslip", "09_paid_locked", "11_queries"];
+let figNo = 3;
+const shot = (name, cap) => (FINAL && !KEEP_SHOTS.includes(name)) ? []
+  : [image(path.join(__dirname, "shots", `${name}.png`), 600, 375), caption(`Figure ${figNo++} – ${cap.replace(/^Figure \d+ – /, "")}`)];
 
 /** Splits a SQL file into sections: [file header, section 1, section 2, ...].
  *  Each section is "-- ----" / comment lines / "-- ----" / code, so separators come
@@ -320,7 +324,7 @@ const sec6 = [
 // ------------------------------------------------------------------ 7. queries
 const sec7 = [
   h1("7. SQL Queries and Outputs"),
-  p([t("Nineteen queries answer real questions an HR or payroll team asks. Each is saved as a view in "), code("sql/05_queries.sql"), t(" and can be run live from the SQL Queries page of the application (Figure 12). Outputs below are the actual results on the sample data (at most 10 rows shown).")]),
+  p([t("Nineteen queries answer real questions an HR or payroll team asks. Each is saved as a view in "), code("sql/05_queries.sql"), t(" and can be run live from the SQL Queries page of the application. Outputs below are the actual results on the sample data (at most 10 rows shown).")]),
   table(["#", "Question answered", "SQL concepts"], DATA.queries.map((q) => [`Q${q.id}`, q.title, q.concepts.join(", ")]), [600, 5200, CONTENT_W - 5800], { size: 17 }),
   ...DATA.queries.flatMap((q) => [
     h2(`Q${q.id}. ${q.title}`),
@@ -338,6 +342,7 @@ const F = blocks("02_functions_procedures.sql"); // [header, f1, f2, f3, f4, p1,
 const T = blocks("03_triggers.sql");             // [header, t1, t2, t3, t4]
 const fx = DATA.functions;
 const tx = DATA.tx;
+const sec8h85 = h2(FINAL ? "8.4 Calling Procedures from the Application" : "8.5 Calling Procedures from the Application");
 const sec8 = [
   h1("8. Procedures, Functions, Cursor and Triggers"),
   p([t("All server-side logic is written in PL/pgSQL, PostgreSQL’s procedural language (the equivalent of Oracle PL/SQL). It lives in "), code("sql/02_functions_procedures.sql"), t(" and "), code("sql/03_triggers.sql"), t(".")]),
@@ -395,7 +400,7 @@ const sec8 = [
   codeBlock("UPDATE employee SET status = 'Resigned' WHERE emp_id = 5;"),
   p([b("Before – his direct reports and the Sales department head:")]), outOf(tx.exit_before), outOf(tx.exit_head_before),
   p([b("After – the trigger moved his team to his own manager (Sachin Tendulkar, employee 1) and cleared the department head:")]), outOf(tx.exit_after), outOf(tx.exit_head_after),
-  h2("8.5 Calling Procedures from the Application"),
+  sec8h85,
   p([t("The web application talks to the database through Supabase’s REST interface (PostgREST), which can call SQL "), b("functions"), t(" over HTTP but not procedures. Thin SECURITY DEFINER wrapper functions therefore check the caller’s role and then CALL the procedure. Row Level Security policies decide which rows each role may read or change; they are defined in "), code("sql/06_supabase_auth_rls.sql"), t(".")]),
   codeBlock(`CREATE OR REPLACE FUNCTION public.api_generate_payroll(p_month INT, p_year INT)
 RETURNS INT
@@ -467,17 +472,18 @@ function reportsAndValidation() {
     h2("9.4 Reports Generated from the Database"),
     p("The application turns the stored data into the reports a payroll team needs. Each report below is produced by the database (a view or a procedure) and shown in the application; the figures are actual outputs on the sample data."),
     table(["Report", "Produced by", "Where it appears"], [
-      ["Itemised payslip", "PAYROLL + PAYROLL_DETAIL + SALARY_COMPONENT (written by generate_monthly_payroll)", "Payroll Run and My Payslips pages (Figure 9)"],
-      ["Monthly payroll totals and payment status", "View q13_monthly_payroll_totals", "Admin / Payroll dashboard (Figure 13)"],
-      ["Department-wise salary cost", "View q04_department_salary_cost", "Dashboard bar chart, SQL Queries page (Figure 12)"],
+      ["Itemised payslip", "PAYROLL + PAYROLL_DETAIL + SALARY_COMPONENT (written by generate_monthly_payroll)", "Payroll Run and My Payslips pages"],
+      ["Monthly payroll totals and payment status", "View q13_monthly_payroll_totals", "Admin / Payroll dashboard"],
+      ["Department-wise salary cost", "View q04_department_salary_cost", "Dashboard bar chart and SQL Queries page"],
       ["Attendance summary", "View q06_attendance_summary", "SQL Queries page"],
       ["Leave balance of every employee", "View q08_leave_balance → fn_leave_balance", "SQL Queries page; each employee’s Leave page"],
       ["Loss-of-pay report", "View q07_loss_of_pay", "SQL Queries page"],
     ], [2600, 3600, CONTENT_W - 6200], { size: 18 }),
     h3("Monthly payroll totals (q13)"), resultTable(q(13).cols, q(13).rows),
     h3("Department-wise salary cost, September 2026 (q04)"), resultTable(q(4).cols, q(4).rows),
-    h3("Attendance summary, September 2026 (q06, first 10 employees)"), resultTable(q(6).cols, q(6).rows),
-    h3("Leave balance 2026 (q08, first 10 employees)"), resultTable(q(8).cols, q(8).rows),
+    ...(FINAL ? [] : [
+      h3("Attendance summary, September 2026 (q06, first 10 employees)"), resultTable(q(6).cols, q(6).rows),
+      h3("Leave balance 2026 (q08, first 10 employees)"), resultTable(q(8).cols, q(8).rows)]),
     h2("9.5 Validation – Invalid Operations Rejected by the Database"),
     p("Every business rule was tested by deliberately attempting an invalid operation. In each case the database itself refused the change, so the rule holds no matter which client sends the request."),
     table(["#", "Attempted operation", "Rule / component", "Database response", "Result"], [
@@ -642,6 +648,50 @@ const sec10 = [
   p("Every component has a clear purpose in the application: each user action in the web app maps to a specific SQL statement, procedure or trigger, and the DB activity panel shows that flow live during the demonstration. Possible extensions are tax-regime based TDS calculation, salary revisions with effective dates, and an audit log table populated by triggers."),
 ];
 
+// ------------------------------------------------------------------ short sections (final report)
+const sec6short = [
+  ...sec6.slice(0, 4), // heading, intro, 6.1 constraint summary table
+  p([t("The complete DDL is in "), code("sql/01_schema.sql"), t(" and was presented in full in the Review II report.")]),
+  h2("6.2 Data Population"),
+  p("Every table holds at least 10 meaningful rows describing All Caps Pvt. Ltd. from August to October 2026; payroll rows are produced by the payroll procedures, not typed in."),
+  table(["Table", "Rows"], counts.map((r) => [r[0], r[1]]), [4500, CONTENT_W - 4500]),
+  h2("6.3 DML Demonstration"),
+  p("INSERT, UPDATE and DELETE statements executed on the populated database, including statements the constraints reject:"),
+  table(["#", "Operation", "Database result"], DATA.dml.map((d, i) => [String(i + 1), d.title,
+    d.result.ok ? `Success – ${d.result.rows.length || d.result.affected || 0} row(s)` : `Rejected – ${d.result.error}`]),
+    [450, 3900, CONTENT_W - 4350], { size: 17 }),
+  pageBreak(),
+];
+
+const SHOWN_QUERIES = [4, 5, 8, 14];
+const sec7short = [
+  h1("7. SQL Queries and Outputs"),
+  p([t("Nineteen queries are saved as views in "), code("sql/05_queries.sql"), t(" and run live from the SQL Queries page. The table lists all of them; four representative queries are shown in full with their actual output.")]),
+  table(["#", "Question answered", "SQL concepts", "Rows"], DATA.queries.map((q) => [`Q${q.id}`, q.title, q.concepts.join(", "), String(q.total)]),
+    [600, 4700, CONTENT_W - 6000, 700], { size: 16 }),
+  ...DATA.queries.filter((q) => SHOWN_QUERIES.includes(q.id)).flatMap((q) => [
+    h2(`Q${q.id}. ${q.title}`),
+    codeBlock(q.sql + ";"),
+    p([t(`Output – ${q.total} row(s)${q.total > q.rows.length ? `, first ${q.rows.length} shown` : ""}:`, { italics: true, size: 19 })], { spacing: { before: 100, after: 60 } }),
+    resultTable(q.cols, q.rows),
+  ]),
+  pageBreak(),
+];
+
+const sec8short = [
+  ...sec8.slice(0, 4), // heading, intro, 8.1 overview table
+  p([t("The complete code of every function, procedure and trigger is in "), code("sql/02_functions_procedures.sql"), t(" and "), code("sql/03_triggers.sql"), t("; the two components at the heart of the monthly cycle are shown below.")]),
+  h2("8.2 Procedure with Cursor – generate_monthly_payroll"),
+  codeBlock(F[5]),
+  p([b("How the cursor is used: "), code("cur_emp"), t(" is declared over the active employees. Each FETCH returns one employee; the loop computes LOP days, earned basic and every active component with the three functions, writes one PAYROLL row and its PAYROLL_DETAIL lines, and skips employees already processed, so a second run creates nothing.")]),
+  outOf(tx.generate), outOf(tx.gen_rows),
+  h2("8.3 Trigger – trg_leave_approved"),
+  codeBlock(T[1]),
+  p("Approving Coco Gauff’s sick leave for 15–16 October writes the leave days into ATTENDANCE automatically:"),
+  outOf(tx.att_after),
+  ...sec8.slice(sec8.findIndex((x) => x === sec8h85)), // 8.5 calling procedures from the app (renumbered below)
+];
+
 // ------------------------------------------------------------------ document
 const portrait = { page: { size: { width: 11906, height: 16838 }, margin: { top: 1300, bottom: 1300, left: 1440, right: 1440 } } };
 const landscape = { page: { size: { width: 11906, height: 16838, orientation: PageOrientation.LANDSCAPE }, margin: { top: 900, bottom: 900, left: 1000, right: 1000 } } };
@@ -670,7 +720,9 @@ const doc = new Document({
     { properties: portrait, footers: footer, children: [...sec1, ...sec2, ...sec3] },
     { properties: landscape, footers: footer, children: sec4 },
     { properties: landscape, footers: footer, children: sec5img },
-    { properties: portrait, footers: footer, children: [...sec5text, ...sec6, ...sec7, ...sec8, ...sec9, ...sec10] },
+    { properties: portrait, footers: footer, children: FINAL
+      ? [...sec5text, ...sec6short, ...sec7short, ...sec8short, ...sec9, ...sec10]
+      : [...sec5text, ...sec6, ...sec7, ...sec8, ...sec9, ...sec10] },
   ],
 });
 

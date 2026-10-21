@@ -1,6 +1,6 @@
 # Employee Payroll Management System
 
-BCSE302L Database Systems course project. The system runs on a PostgreSQL database hosted on **Supabase**, with a role-based **React** web app deployed on **Vercel**.
+BCSE302L Database Systems course project. The system runs on a PostgreSQL database hosted on **Supabase**, with a role-based **React** web app deployed on **Vercel**: https://dbs-proj-mauve.vercel.app
 
 The company in the sample data, All Caps Pvt. Ltd., is fictional; its staff are named after rappers and sports stars for fun. The data covers 20 employees, 10 departments, and attendance, leave and payroll for August–October 2026.
 

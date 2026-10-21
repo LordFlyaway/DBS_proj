@@ -18,7 +18,7 @@ const NAVY = "000000";
 const GREEN = "000000";
 const CONTENT_W = 9026; // A4 portrait, 1" margins (DXA)
 const FINAL = process.env.REVIEW === "3"; // Review III final report adds integration sections
-const LIVE_URL = process.env.LIVE_URL || "";
+const LIVE_URL = process.env.LIVE_URL || "https://dbs-proj-mauve.vercel.app";
 
 const TEAM = [
   ["Krishiv Rajkumar", "24BDE0132"],
@@ -162,6 +162,8 @@ const titlePage = [
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 400 }, children: [b("Under the guidance of")] }),
   new Paragraph({ alignment: AlignmentType.CENTER, children: [t("Dr Rubimalaya R", { size: 24 })] }),
   new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 400 }, children: [t("October 2026")] }),
+  ...(LIVE_URL ? [new Paragraph({ alignment: AlignmentType.CENTER, spacing: { before: 200 },
+    children: [b("Project link: "), t(LIVE_URL)] })] : []),
   pageBreak(),
   new Paragraph({ heading: HeadingLevel.HEADING_1, children: [t("Contents")] }),
   new TableOfContents("Contents", { hyperlink: true, headingStyleRange: "1-2" }),
@@ -179,7 +181,7 @@ const sec1 = [
     ["Guide", "Dr Rubimalaya R"],
     ["Database", "PostgreSQL 17 hosted on Supabase (cloud); PL/pgSQL for procedures, functions, cursors and triggers"],
     ["Application", "React + Vite web application connected to the database through the supabase-js client"],
-    ...(LIVE_URL ? [["Live application", LIVE_URL]] : []),
+    ...(LIVE_URL ? [["Project link", LIVE_URL]] : []),
     ["Source code", "github.com/LordFlyaway/DBS_proj"],
     ["Sample company", "All Caps Pvt. Ltd. – a fictional company whose 20 employees are named after musicians and athletes"],
   ], [2200, CONTENT_W - 2200]),
